@@ -1,6 +1,6 @@
 site_name: Cheat Sheets
 theme:
-  name: windmill 
+  name: readthedocs 
   highlightjs: true
 plugins:
   - search
