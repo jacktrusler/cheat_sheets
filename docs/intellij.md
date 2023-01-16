@@ -13,6 +13,8 @@ gives a bottom bar with plugin info, spacing, branch name, line number and more.
 
 ## Keybinds
 
-`ctrl + alt + s` settings
-`alt + shift + comma` make text smaller. 
-`alt + shift + period` make text larger.
+`ctrl + alt + s`          settings.
+`alt + shift + comma`     make text smaller. 
+`alt + shift + period`    make text larger.
+`ctrl + f4`               closes tab.
+`alt + enter`             shows errors under cursor.
