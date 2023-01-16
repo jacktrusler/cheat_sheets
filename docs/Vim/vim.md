@@ -44,7 +44,6 @@ commands that work that list missed:
     f -- find char in line
     ; -- next
     , -- previous
-
 underlying ex commands: 
 
     :%s/foo/bar/g -- global search and replace
@@ -52,3 +51,33 @@ underlying ex commands:
 *(on jack@jacktrusler.com write a node cli tool in vi)*
 
 ## Vi IMproved
+
+## NeoVim
+Here's the About on github.com/neovim/neovim:  
+> Vim-fork focused on extensibility and usability  
+
+And here's the first paragraph of the readme:  
+
+> Neovim is a project that seeks to aggressively refactor Vim in order to:   
+> - Simplify maintenance and encourage contributions
+> - Split the work between multiple developers
+> - Enable advanced UIs without modifications to the core
+> - Maximize extensibility
+
+I think Neovim does a great job on delivering on all of these goals honestly, and part of the reason 
+is because of their decision to use Lua.  
+
+### What is Lua
+[I stole the notes from this video, one of the core maintainers of Neovim](youtube.com/watch?v=IP3J56sKtn0)  
+Lua is a language created in Brazil in 1993. 
+
+Neovim decided to embed the Lua language into the program. There were 5 main reasons for this.
+1. simplicity (reference manual is only 100 pages, and covers the entire language, standard lib, and C api)
+2. small size (200kb binary size for Linux)
+3. portability (Lua is implemented in ISO C, which can be used basically anywhere)
+4. embeddability (Lua functions can be used inside of vimscript) 
+5. speed (LuaJIT is only 10-40% slower than C, which is extremely fast)
+
+For a text editor, these goals seem like an obvious win. Simplicity is really also key because it 
+allows developers to quickly get up and running with a relatively popular and simple language instead 
+of having to learn vimscript which only really has one use, which is to extend vim. 

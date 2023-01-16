@@ -221,7 +221,7 @@ In spring, services are typically singletons, when spring starts it registers th
 in memory. You declare a service in spring with @Service, and get access to the repository using 
 ```java
 @Autowired
-private TopicRepository TopicRepository
+private TopicRepository topicRepository
 ```
 @Autowired checks if the TopicRepository exists in memory and gives you access to it. Much like 
 we used @Autowired in the controller for this service.
@@ -318,13 +318,13 @@ Allows annotation syntax, that automatically generates getters and setters using
 
 ## Dependency Injection
 [good intro](https://www.youtube.com/watch?v=GB8k2-Egfv0)  
-[good intro numbero dos](https://www.youtube.com/watch?v=EPv9-cHEmQw)  
+[good intro 2](https://www.youtube.com/watch?v=EPv9-cHEmQw)  
 From the second video:
 > Dependency injection generally means passing a dependent object as a parameter to a method, rather than having the method create the dependent object.  
 
 > What this means in practice is that the method does not have a direct dependency on a particular implementation; any implementation that meets the requirements can be passed as a parameter.
 
-Follows the inversion of control principal which says: depend on abstractions rather than implementations. 
+Follows the inversion of control principal which says: *"depend on abstractions rather than implementations."* 
 
 you can do this by creating a generic class or interface that usable my multiple classes, then passing
 in those classes to another generic class. Example below.
