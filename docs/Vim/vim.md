@@ -51,12 +51,67 @@ underlying ex commands:
 *(on jack@jacktrusler.com write a node cli tool in vi)*
 
 ## Vi IMproved
+Vi IMproved was actually taken from Stevie (**ST** **E**ditor for **VI** **Enthusiasts**) written by
+Tim Thompson  but I couldn't find much in terms of the history of Stevie except for changing undo 
+functionality. It seems that a vast majority of what makes Vim, Vim is Bram Moolenaar in 1991. Here's the 
+wikipedia summary on Bram: 
+
+> Bram Moolenaar is a Dutch computer programmer and an active member of the open-source software community. He is the original author, maintainer, release manager, and benevolent dictator for life of Vim,[1] a vi-derivative text editor that is very popular among programmers and power users. From July 2006 until September 2021 Moolenaar was employed by Google working in the Zürich office.[2] He was able to spend part of his time maintaining Vim.[3]
+
+The benevolent dictator part is worth mentioning, because it ended up being part of the reason why
+vim derivatives exist and also why vim9script was invented. For now though, lets jump into Vim. 
+
+*(spin up new container explain, the container show off the build file, what is installed blah blah)*
+
+Vim is massively different from Vi, it has a crazy depth of new functionality, so much that i'm going 
+to miss probably 90% of it, but some of the major differences that i'm going to talk about are:  
+
+1. USER INTERFACE -- buffers / windows / tabs 
+2. MODES -- normal / insert / visual / terminal / command
+3. MOTIONS -- new combinations introduced to move around the page and edit text.
+4. KEYMAPS -- customizable ways to automate your vim experience.
+5. PLUGINS -- the true next level of Vim written by users.
+
+Here's an example .vimrc
+
+    let mapleader = " "
+    nnoremap <leader>so <CMD>w<CR><CMD>so%<CR>
+    let g:netrw_banner=0 "turns netrw banner off
+
+    set smartindent 
+    set termguicolors "Enables 24-bit RGB color in the TUI
+    set nohlsearch "turns off highlighting on search
+    set expandtab "insert mode puts in spaces when tabbing
+    set tabstop=4 "number of spaces a tab counts for
+    set softtabstop=4 "editing operations (like <BS>) are deleting 2 spaces
+    set shiftwidth=4 "number of spaces to use for each autoindent
+    set nowrap "makes it so text runs off the screen instead of wrapping
+    set number "sets number on side column
+    set relativenumber "makes line number relative to cursor position
+    set numberwidth=2 "number column char width
+    set scrolloff=10 "scroll (x) lines from top and bottom
+    set ignorecase  "can sEarch case ignoring caps
+
+    set mouse=a "mouse in all modes
+    set formatoptions-=cro "comments don't continue when enter is pressed
+
+    set noswapfile "Living life on the edge
+
+    fu! HighlightYank() 
+       echo 'yolo' 
+    endfu
+
+    colorscheme slate
 
 ## NeoVim
+Neovim was created as a community fork for Vim with the goals of making a faster, more collaborative
+and more user friendly and configurable Vim. It can basically be downloaded and run on any operating
+system and has hundreds of open source projects currently in the ecosystem.
+
 Here's the About on github.com/neovim/neovim:  
 > Vim-fork focused on extensibility and usability  
 
-And here's the first paragraph of the readme:  
+And here's the first paragraph of the README:  
 
 > Neovim is a project that seeks to aggressively refactor Vim in order to:   
 > - Simplify maintenance and encourage contributions
@@ -81,3 +136,29 @@ Neovim decided to embed the Lua language into the program. There were 5 main rea
 For a text editor, these goals seem like an obvious win. Simplicity is really also key because it 
 allows developers to quickly get up and running with a relatively popular and simple language instead 
 of having to learn vimscript which only really has one use, which is to extend vim. 
+
+## NeoVim Advanced features
+Neovim comes built in with a lot of advanced features that were not present in Vi Improved. One of 
+the biggest changes that is integrated into Neovim core is the addition of a language server protocol. 
+(LSP)
+
+### Language Server Protocol (LSP)
+(These are both great talks btw i'd really recommend watching both videos)  
+[I stole notes from TJ again](https://www.youtube.com/watch?v=C9X5VF9ASac)  
+
+> "Language Server Protocol (LSP) defines the protocol used between an editor or IDE and a language 
+> server that provides language features like auto complete, go to definition, find all references etc"
+
+> Created in June, 2016 by Microsoft in collaboration with Red Hat and Codenvy.
+
+Splits the problem into languages and editors where languages implement LSP and editors implement 
+LSP instead of editors having to implement the language and the protocol simultaneously. 
+
+Neovim ships with a client (something that sends requests to the server), the client (Neovim)
+sends a request (go\_to\_definition() for example) to a server (An installed language server running in the 
+background) and gets a response for each function.
+
+So the question is, how do you install the *Language Servers* you want to get all of the goodness
+that you expect from a full blown IDE like VScode or Intellij? Right now all we have is a client 
+implementing Language Server Protocol, but remember we still need a server that provides us (the client)
+with the response.

@@ -1,10 +1,17 @@
 # Fedora
 ![distributor-logo-fedora-icon](https://user-images.githubusercontent.com/89369559/208185875-cbe96cb7-de32-4294-8d55-2e54f983dbce.png) 
-
 Redhat's desktop environment for part-time nerds.
 
-A proud user of Dandified Yum (dnf)... Why Dandified? I haven't a clue and its tough to find on the internet.
-I guess it's because it's like yum but fancier?
+[Fedora Workstation Download](https://getfedora.org/en/workstation/download/)  
+[Fedora Silverblue Download](https://silverblue.fedoraproject.org/download)  
+
+**Fedora workstation** is the official distribution, while **Fedora Silverblue** is a version of Fedora 
+that makes the operating system immutable. That is, you can't go in and mess with the OS files, generally 
+better for new users or people that just want an operating system that works and don't want to deal with 
+customizing the internals.
+
+A proud user of Dandified Yum **-- dnf --** Why Dandified? I haven't a clue and its tough to find on the internet.
+I guess it's because it's like **-- yum --** but fancier?
 
 ### Installing Stuff
 Official Red Hat package manager file **.rpm** is best usually, then **flatpak**, then **snap**. 
@@ -88,6 +95,18 @@ make sure virt-manager is installed
 
 If everything installed correctly you should be able to open the GUI tool: `sudo virt-manager`
 Grab an iso and follow the install steps, put the iso in: `/var/lib/libvirt/images`
+If your root partition isn't very large (like mine) I would recommend putting your images and storage 
+into your home directory... I put mine in 
+
+    /home/jack/lib/libvirt/images
+    /home/jack/lib/libvirt/storage
+
+To configure storage go to: 
+
+    Edit > Connection Details > Storage
+
+And add new storage with the amount of space you want to reserve for the OS. When installing a VM use 
+one of these storage partitions you made by browsing for it in the "custom" option.
 
 After you install, if you want to change your config (for things like storage or RAM size), you can: 
 
@@ -96,4 +115,5 @@ After you install, if you want to change your config (for things like storage or
 ### Getting Connected to a VPN
 Fedora comes with built in [NetworkManager-openconnect.](https://src.fedoraproject.org/rpms/NetworkManager-openconnect)  
 
-This means you can connect to a cis
+This means you can connect to a Cisco Network using the built in vpn settings manager under   
+Settings > Network > (Press the + to add a network)
