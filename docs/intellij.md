@@ -18,3 +18,6 @@ gives a bottom bar with plugin info, spacing, branch name, line number and more.
 `alt + shift + period`    make text larger.
 `ctrl + f4`               closes tab.
 `alt + enter`             shows errors under cursor.
+
+`shift + shift`           search all classnames, methods, dirs, actions
+`ctrl + shift + f`        search for any string match in whole repository
