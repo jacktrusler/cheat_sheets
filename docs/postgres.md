@@ -33,6 +33,7 @@ Big elephant database, everyone uses it so may as well get used to it ig.
 `\d+ table-name` lists table deets  
 `SHOW hba_file` shows the config file for postgres if you have sudo access  
 `\password user` changes password for user if you have appropriate permissions
+`\conninfo` shows the port the database is running on
 
     CREATE DATABASE mydb  
 
@@ -49,4 +50,9 @@ import schema using .sql file
     psql -h hostname -d databasename -U username -f file.sql -L logfile.log
     psql -h jsonbournesupremacy -d jsonb -U postgres -f file.sql -L logfile.log
 
+## DBeaver
+The database solution for people who like free stuff. 
 
+If all databases aren't appearing after connection try: 
+
+right click on connection > Edit connnection > PostgreSQL tab > check "show all databases"

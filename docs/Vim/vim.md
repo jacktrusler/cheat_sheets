@@ -28,13 +28,14 @@ as part of the first Berkely Software Distribution (BSD) / Unix release in March
 "The commands ex and vi point to the same program, started in different modes. You can start ex by running vi -e, or you can start vi by running ex -v. Additionally, from within ex, you can start vi with the visual command (or vi for short). From inside vi, you can start ex with the command Q."
 
 I found some preserved source code for a legacy version of vi:  
+
     https://github.com/n-t-roff/heirloom-ex-vi  
 Most Linux distros come with a binary called vi but it is really vim in disguise with a few features
 taken out. 
 
     ssh jack@jacktrusler.com
 
-I installed Vi on BSD because it feels like Bill Joy would've liked it that way, plus installing it
+I'm going to use Vi on BSD because it feels like Bill Joy would've liked it that way, plus installing it
 on Linux is actually pretty annoying because of terminal features.
 
 [Here's a list of original Vi commands](https://www.cs.colostate.edu/helpdocs/vi.html#:~:text=To%20use%20vi%20on%20a,which%20you%20may%20enter%20text.)
@@ -74,6 +75,11 @@ to miss probably 90% of it, but some of the major differences that i'm going to 
 
 Here's an example .vimrc
 
+
+    " ----------------------------
+    " Variables
+    " ----------------------------
+
     let mapleader = " "
     nnoremap <leader>so <CMD>w<CR><CMD>so%<CR>
     let g:netrw_banner=0 "turns netrw banner off
@@ -97,11 +103,49 @@ Here's an example .vimrc
 
     set noswapfile "Living life on the edge
 
-    fu! HighlightYank() 
-       echo 'yolo' 
-    endfu
+    " ----------------------------
+    " Status Line 
+    " ----------------------------
+      set laststatus=2                             " always show statusbar  
+      set statusline=  
+      set statusline+=%-4.3n\                      " buffer number  
+      set statusline+=%f\                          " filename   
+      set statusline+=%h%m%r%w                     " status flags  
+      set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type  
+      set statusline+=%=                           " right align remainder  
+      set statusline+=0x%-8B                       " character value  
+      set statusline+=%-14(%l,%c%V%)               " line, character  
+      set statusline+=%<%P                         " file position  
 
-    colorscheme slate
+    colorscheme slate 
+
+    " ----------------------------
+    " Remaps
+    " ----------------------------
+    let mapleader = " "
+    " Normal Mode
+    nnoremap <leader>V :Vexplore<CR>
+    nnoremap <leader>v :vsplit<CR>
+    nnoremap <leader>S :Sexplore<CR>
+    nnoremap <leader>s :split<CR>
+    nnoremap <leader>e :Explore<CR>
+    nnoremap <leader>rg :Rg<CR>
+    nnoremap <leader>edit :vsplit $MYVIMRC<CR>
+    nnoremap <leader>D :bd<CR>
+    nnoremap <leader>d :bp \| sp \| bn \| bd<CR>
+    nnoremap <leader>term :bel 12 split \| term <CR>
+
+    " Visual Mode
+    vnoremap <leader>p "_dP
+    vnoremap <leader>Y "+y
+    vnoremap <leader>y ygv<Esc>
+
+    " Command Mode
+    cnoremap %% <C-R>=expand('%:h').'/'<CR> 
+
+    " Terminal Mode
+    tnoremap qq <C-\><C-N>
+    tnoremap quit <C-\><C-N><C-W>k
 
 ## NeoVim
 Neovim was created as a community fork for Vim with the goals of making a faster, more collaborative
