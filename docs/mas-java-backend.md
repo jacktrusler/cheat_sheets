@@ -41,8 +41,56 @@ for updating the database starts here and moves as follows:
 Here's the flow for enableDriver in mas-rest-service: (run the server from the RestServicesApplication class 
 server runs locally on port 7010.)
 
-inside this interface there are mappings to endpoints, these methods are provided by spring | hibernate. 
-when the endpoint is hit the enableDriver function is run with the variables from the endpoint.
+Starting in **TSHybridEndpointAPI** the endpoint is hit by `localhost:7010/v5.5/call` and includes 
+headers. 
+
+Some additional headers defined might look like this:   
+```
+Accept: application/json
+Bearer: TWFzZGV2ZWxvcGVyMjAxOSE
+Content-Type: application/json
+x-trans-provider-99: 57093
+x-user-id: x-trans-provider-99`
+```
+
+Then inside the endpoint api, if the @RequestHeaders match they are passed to the postCall. 
+```java
+@PostMapping(
+      value = "/call",
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE
+  )
+public interface TSHybridEnpointAPI {
+  ResponseEntity<HybridTSTPResponse> postCall(@RequestBody HybridTPRequestEnvelope hybridRequest,
+      @RequestHeader(name = "x-user-name", required = false) String userName,
+      @RequestHeader(name = "x-call-name-override", required = false) String responseCallName,
+      @RequestHeader(name = "x-trans-provider-ids", required = false) String transProviderIds,
+      @RequestHeader(name = "x-trans-provider-99", required = false) String transProvider99,
+      @RequestHeader(name = "x-user-id", required = false) String userId,
+      //... way more potential headers)
+}
+```
+After this the implementation of the interface is responsible for making the call to the rest services. 
+It does this by checking the call field, which is provided by the terascript post req and then using the 
+method that it relates to. These methods are defined in the various EndPoint classes.
+
+```java 
+public class TSHybridEndpointApiController implements TSHybridEndpointAPI {
+  private final HybridEndPoint hybridEndPoint;
+  private final HybridSessionEndPoint hybridSessionEndPoint;
+  private final TransportationProviderDriverService transportationProviderDriverService;
+  private final HybridTripEndPoint hybridTripEndPoint;
+
+  //...many more checks to see what the call string equals
+  } else if (StringUtils.equals(envelope.getRequest().getCall(), "enableDriver")) {
+    response = hybridEndPoint.enableDriver(transProvider99, userId, envelope);
+  } else if (StringUtils.equals(envelope.getRequest().getCall(), "disableDriver")) {
+    response = hybridEndPoint.disableDriver(transProvider99, userId, envelope);
+  }
+}
+```
+[this part i'm unsureof but somehow these disableDriver() and enableDriver() function call the rest 
+service controllers]
 
 ```java
 public interface TransProviderDriverRestServiceApi {
@@ -52,6 +100,9 @@ public interface TransProviderDriverRestServiceApi {
   ResponseEntity<Boolean> enableDriver(@PathVariable("tpId") int tpId, @PathVariable("userId") int userId, @PathVariable("driverId") int driverId);
 }
 ```
+inside this interface there are mappings to endpoints, these methods are provided by spring | hibernate. 
+when the endpoint is hit the enableDriver function is run with the variables from the endpoint.
+
 The implementation of the interface is simply the interface with Impl appended, this pattern is repeated for other controllers 
 in the db-service.
 

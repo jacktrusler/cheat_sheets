@@ -8,9 +8,18 @@ Redhat's desktop environment for part-time nerds.
 **Fedora workstation** is the official distribution, while **Fedora Silverblue** is a version of Fedora 
 that makes the operating system immutable. That is, you can't go in and mess with the OS files, generally 
 better for new users or people that just want an operating system that works and don't want to deal with 
-customizing the internals.
+customizing the internals. However, the **dnf** package manager doesn't work the same, instead you have to 
+use **OSTree**, which is not a package system, summarized as "git for operating system binaries". 
 
-A proud user of Dandified Yum **-- dnf --** Why Dandified? I haven't a clue and its tough to find on the internet.
+Basically dnf installs packages that are usually composed of partial filesystem trees with metadata 
+and scripts will then assemble the programs on the client machine. OSTree only deploys *complete* 
+filesystem trees and thus does not need to know what dependencies are available. This makes it ideal 
+for an isolated OS environment like silverblue.
+
+[Here's more info if you're curious](https://ostree.readthedocs.io/en/stable/manual/introduction/)
+
+Back to **Fedora Workstation**  
+Dandified Yum **-- dnf --** Why Dandified? I haven't a clue and its tough to find on the internet.
 I guess it's because it's like **-- yum --** but fancier?
 
 ### Installing Stuff
@@ -18,9 +27,12 @@ Official Red Hat package manager file **.rpm** is best usually, then **flatpak**
 
 In general flatpak is better than snap for desktop fedora, try to find flatpak packages if possible. 
 
+    sudo dnf install -y flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 What is flatpak/snap? 
 A distribution independent package format designed to run apps in a virtual sandbox
-that contains all the dependencies needed to run the software. (Think docker)
+that contains all the dependencies needed to run the software. Flatpak is built on top of OSTree. 
 
   - flatpak is a packaging format for desktop GUI apps, snap has larger scope
   - snaps can be used for terminal programs and are best(tm) suited for server applications
