@@ -53,7 +53,8 @@ x-trans-provider-99: 57093
 x-user-id: x-trans-provider-99`
 ```
 
-Then inside the endpoint api, if the @RequestHeaders match they are passed to the postCall. 
+Then inside the endpoint api, if the @RequestHeaders match they are passed to the postCall. (Need to confirm this is true, I'm not sure how 
+this works in spring, required = false seems to make the fields optional??)
 ```java
 @PostMapping(
       value = "/call",
@@ -71,7 +72,7 @@ public interface TSHybridEnpointAPI {
 }
 ```
 After this the implementation of the interface is responsible for making the call to the rest services. 
-It does this by checking the call field, which is provided by the terascript post req and then using the 
+It does this by checking the call field, which is provided by the body of the terascript post req and then using the 
 method that it relates to. These methods are defined in the various EndPoint classes.
 
 ```java 
@@ -89,8 +90,71 @@ public class TSHybridEndpointApiController implements TSHybridEndpointAPI {
   }
 }
 ```
-[this part i'm unsureof but somehow these disableDriver() and enableDriver() function call the rest 
-service controllers]
+enableDriver function is called in the TSHybridApiController which is then used to call the function in HybridEndPointImpl. 
+
+```java
+//HybridEndPointImpl
+
+  public HybridTSTPResponse enableDriver(String transProviderId, String userId, HybridTPRequestEnvelope hybridRequest) throws HybridException {
+    //always return success call status
+    HybridTSTPResponse result = HybridTSTPResponse.builder()
+            .callName(hybridRequest.getRequest().getCall()).callStatus(CallStatus.SUCCESS.getCode())
+            .build();
+
+    Integer tpId = EndpointUtils.getIntegerFromObject(transProviderId);
+    Integer user = EndpointUtils.getIntegerFromObject(userId);
+    if (tpId == null) {
+      // No TP Ids provided - cannot get driver for security reasons = There could be a TP seeking info of a driver
+      // that does not belong to his TP ID
+      log.warn("No TP ID provided in the header");
+      result.setResponseStatus(ResponseStatus.INVALID_VALUE.getCode());
+    } else if(user == null) {
+      log.warn("No user ID provided in the header");
+      result.setResponseStatus(ResponseStatus.INVALID_VALUE.getCode());
+    } else {
+      HybridTPRequest hybridTPRequest = hybridRequest.getRequest();
+      Optional<Integer> driverId = Optional.empty();
+      Object exists = hybridTPRequest.getAdditionalFields().get(DRIVER_ID_INPUT);
+
+      if (Objects.nonNull(exists)) {
+        Integer driverNum = EndpointUtils.getIntegerFromObject(exists);
+        if (Objects.isNull(driverNum)) {
+          log.error("Invalid driverId must be number");
+          //INVALID_VALUE because not a number
+          result.setResponseStatus(ResponseStatus.INVALID_VALUE.getCode());
+        } else {
+          driverId = Optional.of(driverNum);
+        }
+      } else {
+        log.error("Missing driver ID");
+        //MISSING_VALUE
+        result.setResponseStatus(ResponseStatus.MISSING_VALUE.getCode());
+        return result;
+      }
+      //---------------------------------
+      // Here is the line of interest
+      //---------------------------------
+      ResponseEntity<Boolean> driverResult =
+              transProviderDriverService.enableDriver(tpId, user, driverId.get());
+
+      if (driverResult != null && driverResult.getBody() != null) {
+        Boolean driverStatus = driverResult.getBody();
+        if(driverStatus) {
+          //SUCCESS because we have values
+          result.setResponseStatus(ResponseStatus.SUCCESS.getCode());
+        } else {
+          result.setResponseStatus(ResponseStatus.DRIVER_NOT_FOUND.getCode());
+        }
+      } else {
+        //NO_RESULTS on empty body
+        result.setResponseStatus(ResponseStatus.NO_RESULTS.getCode());
+      }
+    }
+    return result;
+  }
+```
+The following is the interface that defines the api implementation, the endpoints are not used at the moment (1/24/2023). So instead
+it's just acting like a plain old java implementation, without the springboot functionality.
 
 ```java
 public interface TransProviderDriverRestServiceApi {
@@ -100,11 +164,14 @@ public interface TransProviderDriverRestServiceApi {
   ResponseEntity<Boolean> enableDriver(@PathVariable("tpId") int tpId, @PathVariable("userId") int userId, @PathVariable("driverId") int driverId);
 }
 ```
-inside this interface there are mappings to endpoints, these methods are provided by spring | hibernate. 
+- NOTE: inside this interface there are mappings to endpoints, these methods are provided by spring | hibernate. 
 when the endpoint is hit the enableDriver function is run with the variables from the endpoint.
 
-The implementation of the interface is simply the interface with Impl appended, this pattern is repeated for other controllers 
-in the db-service.
+- NOTE: Currently 1/24/2023 these endpoints are just placeholders, while this functionality works (i.e. with postman) it is not yet 
+integrated into mas-services
+
+While this api endpoint will call the function, the uri is not used currently, instead the function is called directly from the 
+HybridEndPointImpl.
 
 ```java
 public class TransProviderDriverRestServiceApiImpl implements TransProviderDriverRestServiceApi {
@@ -137,6 +204,7 @@ public class TransProviderDriverRestServiceApiImpl implements TransProviderDrive
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+    //...More methods
 }
 ```
 

@@ -317,6 +317,8 @@ public class Topics {
 Allows annotation syntax, that automatically generates getters and setters using dependency injection.
 
 ## Dependency Injection
+
+**Aka a fancy way of saying passing instance variables to objects**
 [good intro](https://www.youtube.com/watch?v=GB8k2-Egfv0)  
 [good intro 2](https://www.youtube.com/watch?v=EPv9-cHEmQw)  
 From the second video:
@@ -335,6 +337,8 @@ public class SomeClass {
     public SomeClass(Database implementedClass) {
       this.database = implementedClass 
     }
+
+    //use this.database somehow
 }
 
 interface Database {
@@ -352,7 +356,7 @@ public class DerbyDatabase implements Database {
 public class Main {
   public static void main(String[] args) {
     Database myDatabase = new DerbyDatabase();
-    SomeClass anything = new SomeClass(myDatabase);
+    SomeClass anything = new SomeClass(myDatabase); // injecting the dependency aka giving an object it's instance variables
     anything.requiredMethod();
     // prints I am a Derby Database
   }
