@@ -1,6 +1,6 @@
 # Ansible
-
-Redhat's solution for automating server tasks. 
+![Ansible](./svgs/ansible.svg "Ansible")
+*Redhat's solution for automating server tasks.* 
 
 Ansible uses .yaml (YAML ain't markup language) to define what they call a *playbook* which is a series
 of commands that are run in order based on how the script is defined. 

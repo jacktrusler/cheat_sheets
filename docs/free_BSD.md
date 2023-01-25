@@ -1,8 +1,8 @@
 # Free BSD
-![distributor-logo-freebsd-icon](https://user-images.githubusercontent.com/89369559/208186073-914e60fa-5d12-4065-b27c-091799d28236.png)
+![Free BSD](./svgs/freeBSD.svg "Free BSD")
+*You can't spell based without BSD*
 
 ## Why BSD
-You can't spell based without BSD. 
 Brought to you by the boys (and girls) at Berkley, the Berkley Software Distribution. For Free! 
 
 Unix based OS, shares a general schmood with Linux.

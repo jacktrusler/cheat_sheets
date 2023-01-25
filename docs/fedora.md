@@ -1,6 +1,6 @@
 # Fedora
-![distributor-logo-fedora-icon](https://user-images.githubusercontent.com/89369559/208185875-cbe96cb7-de32-4294-8d55-2e54f983dbce.png) 
-Redhat's desktop environment for part-time nerds.
+![Fedora](./svgs/fedora.svg "Fedora")
+*Redhat's desktop environment for part-time nerds.*
 
 [Fedora Workstation Download](https://getfedora.org/en/workstation/download/)  
 [Fedora Silverblue Download](https://silverblue.fedoraproject.org/download)  
@@ -129,3 +129,11 @@ Fedora comes with built in [NetworkManager-openconnect.](https://src.fedoraproje
 
 This means you can connect to a Cisco Network using the built in vpn settings manager under   
 Settings > Network > (Press the + to add a network)
+
+### Ruby
+
+    sudo dnf install ruby
+To install solargraph --the ruby language server provider--, install the developer environment. The developer
+environment is needed to compile ruby extensions (which are mostly written in C).
+
+    sudo dnf install ruby-devel
