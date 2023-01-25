@@ -1,4 +1,6 @@
 # Networking
+![Networking](./svgs/networking.svg "Networking")
+*I'm not gonna pretend like I know how networking works*
 
 (most of this was taken from u/8483 networkingTools.md from [this thread](https://www.reddit.com/r/learnprogramming/comments/106jfin/my_selftaught_programming_notes_fullstack_web/))
 

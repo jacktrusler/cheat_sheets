@@ -1,7 +1,6 @@
 # PostgreSQL
-![Evernote-Book-icon](https://user-images.githubusercontent.com/89369559/208186538-07c26823-cacb-4c56-9699-16b3749eb602.png)
-
-Big elephant database, everyone uses it so may as well get used to it ig. 
+![PostgreSQL](./svgs/postgreql.svg "PostgreSQL")
+*Big elephant database, everyone uses it so may as well get used to it ig.* 
 
 ### Installing on CentOS
 

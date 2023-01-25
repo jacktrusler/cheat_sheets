@@ -1,4 +1,6 @@
 # Mac OS
+![Macintosh](./svgs/apple.svg "Macintosh")
+*Nothin more posh than a Macintosh*
 
 How could you possibly need a cheat sheet for mac?? Isn't it the easiest operating system even granny could use it?
 

@@ -1,5 +1,6 @@
 # MongoDB with NextJS
-![download](https://user-images.githubusercontent.com/89369559/208187392-e74cec98-13cc-4272-8efb-29e1583ad8f2.png) ![download](https://user-images.githubusercontent.com/89369559/208187230-6a0a6768-3c18-497e-82d1-8338f5c870af.png)
+![MongoDB](./svgs/mongo.svg "Mongo") ![NextJS](./svgs/next_blue.svg "NextJS")
+*Sometimes you need a little soy*
 
 ## My folder structure
 ```

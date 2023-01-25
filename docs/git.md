@@ -1,7 +1,12 @@
 # Git
-![git-icon](https://user-images.githubusercontent.com/89369559/208186269-ccc1235a-07b5-4efc-a83e-c4c852a79711.png)
+![Git](./svgs/git.svg "Git")
+
+*To quote the man himself, Linus Torvalds, this was git's first commit:*  
+> *Initial revision of "git", the information manager from hell*
 
 ## General Info
+
+[Here's the original readme, pretty informative and a little funny](https://git.kernel.org/pub/scm/git/git.git/tree/README?id=e83c5163316f89bfbde7d9ab23ca2e25604af290)
 
 Working tree: a single checkout that is pulled out of a compressed database in the git directory.  
 Staging area: a file that stores information about what will go into the next commit (also called index)  
@@ -24,11 +29,6 @@ Files have 4 states:
 **Staged**: files that have been *copied into* the index (.git/index), but have not been committed. This is done by the `git add <file>` command.  
 
 ![The staging process](https://git-scm.com/book/en/v2/images/lifecycle.png)
-
-Git has three main types of objects that are stored: 
-Blobs: which are usually files that are compressed and hashed
-Trees: which are structures that point to the files, analogous to directories
-Commits: which store information about the hash values, who saved them, when and why they were saved.  
 
 ## Configuration
 ```
@@ -117,18 +117,19 @@ when you git push origin master now the master branch locally is pushed to the
 origin branch which is located at the url you specified, aliased as origin.
 
 ### Removing files/editing entire history
-    git filter-branch --tree-filter 'rm -r <somefile>' HEAD
-    tree-filter runs the command after each checkout of the project and recommits the results
-        git filter-branch --commit-filter '
-          if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
-          then
-          GIT_AUTHOR_NAME="Scott Chacon";
-          GIT_AUTHOR_EMAIL="schacon@example.com";
-          git commit-tree "$@";
-          else
-          git commit-tree "$@";
-        250
-          fi' HEAD
+```bash
+git filter-branch --tree-filter 'rm -r <somefile>' HEAD
+# tree-filter runs the command after each checkout of the project and recommits the results
+    git filter-branch --commit-filter '
+      if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
+      then
+        GIT_AUTHOR_NAME="Scott Chacon";
+        GIT_AUTHOR_EMAIL="schacon@example.com";
+        git commit-tree "$@";
+      else
+        git commit-tree "$@";
+      fi' HEAD
+      ```
 This command will change the name and email address for every commit.  
 ### NOTE: 
 git-filter-repo is a python script that is the current recommended way of rewriting history.
@@ -136,6 +137,7 @@ https://github.com/newren/git-filter-repo
 
 # Github
 ### I know Github isn't git  
-`.` brings up web editor  
-`>` brings up web editor in new window  
-`t` brings up file search  
+'.' brings up web editor  
+'>' brings up web editor in new window  
+'t' brings up file search  
+'/' brings up page search

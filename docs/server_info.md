@@ -1,5 +1,6 @@
 # Server Info 
-![images](https://user-images.githubusercontent.com/89369559/208187073-66cd63a9-439c-4fea-a9b1-c60699eac2a0.png)
+![Server Info](./svgs/servers.svg "Server Info")
+*How to be a Redhat aficionado*
 
 ## CentOS 9
 Why centOS 9? Stable and reliable, doesn't need to be updated often.  

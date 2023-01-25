@@ -1,5 +1,6 @@
-# Intellij
-Coolest thing to happen to Java since Runescape. 
+# Intellij Idea
+![Intellij Idea](./svgs/intellij.svg "Intellij Idea")
+*Coolest thing to happen to Java since Runescape.* 
 
 ## Settings / Plugins
 `ctrl + alt + s` opens Settings

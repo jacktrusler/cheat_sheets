@@ -1,6 +1,6 @@
 # Python 
-![Other-python-icon](https://user-images.githubusercontent.com/89369559/208186725-c5a55f1d-bfe8-4022-be96-4790fcc33cdc.png)  
-Weird Snaky Language
+![Python](./svgs/python.svg "Python")
+*Weird Snaky Language*
 
 When using python you usually want to set up a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/). 
 

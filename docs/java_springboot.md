@@ -1,7 +1,6 @@
 # Java SpringBoot
-Interfaces are an abstract blueprint on how to create a class
-
-Classes are a blueprint of an object that is stored in the heap in memory.
+![Spring](./svgs/spring.svg "Springboot")
+*Spring based applications that you can "just run"*
 
 ## Spring Boot
 [Watch this guys' playlist](https://www.youtube.com/playlist?list=PLqq-6Pq4lTTbx8p2oCgcAQGQyqN8XeA1x)  
