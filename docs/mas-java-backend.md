@@ -2,27 +2,43 @@
 Mas stands for Medical Answering Service, it is a company that specializes in medical transportation.
 
 ## Repository
-The Repository is broken up into many parts, the four directories I care about at the moment are:
-1. mas-core-utils
-2. mas-rest-service
-3. mas-db-service
-4. mas-core-model
+The Repository is broken up into many parts, the three directories I care about at the moment are:
+1. mas-rest-service
+2. mas-db-service
+3. mas-core-model
 
-## mas-core-utils
-A place where helper functions/classes are kept i.e. in class MedAnsweringUtils
+## Summary
 
-```java
-/**
-   * Utility method to calculate time taken since a given number in millis
-   *
-   * @param given time in mills to calculate the difference
-   * @return the difference in millis between now and the given time
-*/
-public static long timeFromInMillis(long given) {
-  long now = System.currentTimeMillis();
-  return (given == 0 || given < now) ? 0 : now - given;
-}
+*(If you want the full implementation, including methods, continue after the summary.)*  
+To summarize the flow, it goes like this
+
+1. Terascript makes an api request using the 
+`http://localhost:7010/v5.5/call` endpoint
+
+2. Inside this request, extra headers are included 
+[additional headers](#additional-headers) and the body of the request includes a field called `call`
+which references the function to be called.
+
+3. The TSHybridEndpointApiController checks to see what the call string equals and passes it along to
+HybridEndPointImpl as defined by the HybridEndPoint interface.
+
+4. Calls method in TransProviderDriverRestServiceApi, which builds a uri using the WebClient object:  
+`http://localhost:6010/tp/enableDisableDriver/{tpId}/{userId}/{driverId}/{statusFlag}` to hit the [mas-db-service](#mas-db-service).
+
+5. The request is captured by a spring annotation 
 ```
+@RequestMapping("/tp/enableDisableDriver/{tpId}/{userId}/{driverId}/{statusFlag}")
+@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+Boolean enableDisableDriver(@PathVariable("tpId") Integer tpId, @PathVariable("userId") Integer userId,
+                            @PathVariable("driverId") Integer driverId, @PathVariable("statusFlag") Boolean statusFlag);
+```
+and the variables are passed into the method related to this `@RequestMapping`
+
+6. The database is accessed using a repository object `TPDriverRepository tpDriverRepository` and returns
+either an entity or a data transfer object (DTO)
+
+7. The DTO is possibly manipulated or simply returned (in this case it is changing a status flag),
+and then a response is sent to `http://localhost:7010` and finally back to the caller.
 
 ## mas-rest-service
 The directory for endpoints attempting to reach various services in the mas backend. The general flow
@@ -31,7 +47,7 @@ for updating the database starts here and moves as follows:
 ```java
     1. TSHybrid  //Endpoint with path /v5.5/call  
     2. HybridEndPoint  //Interface  
-    3. HybridEndPointImp  //Class that performs basic validation  
+    3. HybridEndPointImpl  //Class that performs basic validation  
     4. RestController  //Interface
     5. RestControllerImpl  //Class that hits mas-db-service
     6. DbServiceController  //Interface 
@@ -44,6 +60,7 @@ server runs locally on port 7010.)
 Starting in **TSHybridEndpointAPI** the endpoint is hit by `localhost:7010/v5.5/call` and includes 
 headers. 
 
+### Additional Headers
 Some additional headers defined might look like this:   
 ```
 Accept: application/json
@@ -52,6 +69,19 @@ Content-Type: application/json
 x-trans-provider-99: 57093
 x-user-id: x-trans-provider-99`
 ```
+
+The body of the request might look like this:
+```json
+{
+    "TPRequest": {
+        "sessionIdentifier": "e2714d9f-d42c-4c8a-afe6-745942107903",
+        "call": "enableDriver",
+        "version": "1",
+        "driverId": 1881532
+    }
+}
+```
+where the `call` field is the function that will be called.
 
 Then inside the endpoint api, if the @RequestHeaders match they are passed to the postCall. (Need to confirm this is true, I'm not sure how 
 this works in spring, required = false seems to make the fields optional??)
@@ -231,30 +261,34 @@ public interface DBTPDriverRestService {
 These variables get passed along to the method enableDisableDriver which is in the DBTPDriverRestServiceImpl.
 
 ```java
+public class DBTPDriverRestServiceImpl implements DBTPDriverRestService {
 
-@Override
-public Boolean enableDisableDriver(Integer tpId, Integer userId, Integer driverId, Boolean statusFlag) {
-    TPDriverEntity tpDriver = dbtpDriverRepository.findByIdAndTpId(driverId, tpId);
-    if (Objects.nonNull(tpDriver)) {
-        // with this we don't need to detach entities anymore
-        TPDriverEntity originalValue = SerializationUtils.clone(tpDriver);
+  private final UserRepository userRepository;
 
-        tpDriver.setDriverStatusActive(statusFlag);
-        dbtpDriverRepository.save(tpDriver);
+  @Override
+  public Boolean enableDisableDriver(Integer tpId, Integer userId, Integer driverId, Boolean statusFlag) {
+      TPDriverEntity tpDriver = dbtpDriverRepository.findByIdAndTpId(driverId, tpId);
+      if (Objects.nonNull(tpDriver)) {
+          // with this we don't need to detach entities anymore
+          TPDriverEntity originalValue = SerializationUtils.clone(tpDriver);
 
-        List<UserEntity> userList = userRepository.findAllByTransProviderIdAndTransProviderDriverId(tpId, driverId);
-        if (userList.size() > 0) {
-            for (UserEntity user : userList) {
-                user.setStatus(statusFlag);
-            }
-            userRepository.saveAll(userList);
-        }
-        // Add Record in Change Log Table
-        logChanges(userId, originalValue, tpDriver);
+          tpDriver.setDriverStatusActive(statusFlag);
+          dbtpDriverRepository.save(tpDriver);
 
-        return true;
-    }
-    return false;
+          List<UserEntity> userList = userRepository.findAllByTransProviderIdAndTransProviderDriverId(tpId, driverId);
+          if (userList.size() > 0) {
+              for (UserEntity user : userList) {
+                  user.setStatus(statusFlag);
+              }
+              userRepository.saveAll(userList);
+          }
+          // Add Record in Change Log Table
+          logChanges(userId, originalValue, tpDriver);
+
+          return true;
+      }
+      return false;
+  }
 }
 ```
 
