@@ -1,25 +1,20 @@
 html {
   box-sizing: border-box;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 html, body {
 	min-height: 100%;
 }
-	
 body {
 	font-size: 1rem;
 	text-rendering: optimizeLegibility;
 }
-	/* sets the base font size for the document; turns on kerning pairs and ligatures */
-	
+/* sets the base font size for the document; turns on kerning pairs and ligatures */
 body, ul, ol, dl {
 	margin: 0;
 }
-
 article, aside, audio, 
 footer, header, nav, section, video {
 	display: block; 
@@ -95,7 +90,6 @@ input[type="email"]:invalid {
 	clear: left;
 }
 	/* allows a quick shortcut for floating elements left and right while avoiding the “float quirk” problem */
-	
 sub, sup { 
 	line-height: 0;
 }
@@ -129,46 +123,22 @@ html[data-theme='dark'] {
     --red: #cc241d;
     --green: #98971a;
     --yellow: #d79921;
-    --blue: #458588;
+    --blue: #83a598;
     --purple: #b16286;
     --aqua: #689d6a;
-    --orange: #d65d0e;
+    --orange: #fe8019;
     --gray: #a89984;
 }
 
-h1 {
-  font-size: 3rem;
-  color: var(--yellow);
-}
-
-h2 {
-  color: var(--orange);
+main {
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 body {
     background: var(--bg);
     color: var(--fg);
 }
-
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.vim-pic {
-  padding-top: 40px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-}
-
-.vim {
-  width: 300px;
-}
-
 
 a {
     color: var(--link-color);
@@ -177,4 +147,78 @@ a {
 a:hover {
     text-decoration: underline;
     filter: brightness(80%);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-box {
+  display: flex;
+  gap: 16px;
+}
+
+.title {
+  color: var(--orange);
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.subtitle{
+  color: var(--orange);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.sub-sub {
+  color: var(--gray);
+  font-style: italic;
+  padding-bottom: 8px;
+}
+
+#theme-toggle {
+  background: var(--fg);
+  border: 3px outset var(--gray);
+  width: 48px;
+  height: 48px;
+  padding-top: 4px;
+  border-radius: 50%;
+}
+.sun {
+  color: var(--bg);
+}
+.moon {
+  color: var(--bg);
+}
+.hidden {
+  display: none;
+}
+
+.vim-pic {
+  padding-top: 16px;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.vim {
+  width: 200px;
+}
+
+.section {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.section-title {
+  color: var(--orange);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.section-subtitle {
+  color: var(--blue);
+  font-size: 1.2rem;
+  font-weight: 500;
 }

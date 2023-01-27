@@ -59,22 +59,24 @@ wikipedia summary on Bram:
 
 > Bram Moolenaar is a Dutch computer programmer and an active member of the open-source software community. He is the original author, maintainer, release manager, and benevolent dictator for life of Vim,[1] a vi-derivative text editor that is very popular among programmers and power users. From July 2006 until September 2021 Moolenaar was employed by Google working in the Zürich office.[2] He was able to spend part of his time maintaining Vim.[3]
 
+Praise be to Bram Moolenaar! He really did go so far above and beyond what Vi is/was, and made this editor awesome. 
 The benevolent dictator part is worth mentioning, because it ended up being part of the reason why
 vim derivatives exist and also why vim9script was invented. For now though, lets jump into Vim. 
 
-*(spin up new container explain, the container show off the build file, what is installed blah blah)*
+*(rename vimrc file then open vim)*
 
-Vim is massively different from Vi, it has a crazy depth of new functionality, so much that i'm going 
-to miss probably 90% of it, but some of the major differences that i'm going to talk about are:  
+Vim is massively different from Vi, it has a crazy (like seriously there's so many new features) depth of new 
+functionality, so much that i'm going to miss probably 90% of it, but here are some of the major differences:  
 
 1. USER INTERFACE -- buffers / windows / tabs 
 2. MODES -- normal / insert / visual / terminal / command
-3. MOTIONS -- new combinations introduced to move around the page and edit text.
-4. KEYMAPS -- customizable ways to automate your vim experience.
-5. PLUGINS -- the true next level of Vim written by users.
+3. COLORS -- Syntax highlighting / themes
+4. GENERAL FUNCTIONALITY -- jump list / registers / undo history / code folding
+5. MOTIONS -- new combinations introduced to move around the page and edit text
+6. KEYMAPS -- customizable ways to automate your vim experience
+7. PLUGINS -- the true next level of Vim written by users
 
-Here's an example .vimrc
-
+Here's an example of a .vimrc (mine)
 
     " ----------------------------
     " Variables
@@ -134,18 +136,18 @@ Here's an example .vimrc
     nnoremap <leader>D :bd<CR>
     nnoremap <leader>d :bp \| sp \| bn \| bd<CR>
     nnoremap <leader>term :bel 12 split \| term <CR>
+    nnoremap <leader>p "+p
 
     " Visual Mode
-    vnoremap <leader>p "_dP
-    vnoremap <leader>Y "+y
-    vnoremap <leader>y ygv<Esc>
+    vnoremap <leader>p "+p
+    vnoremap <leader>y "+y
 
     " Command Mode
     cnoremap %% <C-R>=expand('%:h').'/'<CR> 
 
     " Terminal Mode
-    tnoremap qq <C-\><C-N>
-    tnoremap quit <C-\><C-N><C-W>k
+    tnoremap qq <C-\><C-N>:q!<CR>
+    tnoremap qk <C-\><C-N><C-W>k
 
 ## NeoVim
 Neovim was created as a community fork for Vim with the goals of making a faster, more collaborative
