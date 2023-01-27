@@ -326,4 +326,18 @@ public class TPDriverEntity implements IDriver {
 ```
 
 This class is a Object Relational Map to the database table fields. The methods on it are provided by lombok
-and thus to change the driver status you call `setDriverStatusActive(statusFlag)`. 
+and thus to change the driver status you call `setDriverStatusActive(statusFlag)`.
+While entities are technically DTOs, some classes in the repository are explicitly appended with Dto. 
+This is to indicate that these data transfer objects are getting data from multiple tables, where as 
+entites only get data from the table they're defined with. 
+
+## Notes on Hibernate, Spring and JPA
+
+Hibernate provides an implementation of the Java Persistance Api (JPA). What this means is that 
+the application's data outlives the process, objects can live beyond the scope of the JVM.
+
+Hibernate allows us to write Hibernate Query Language, which is the language that maps java objects
+to SQL queries. 
+
+Spring framework provides a lot of functionality in creating database objects, defining endpoints, 
+and automatic method generation. 
