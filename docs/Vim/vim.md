@@ -208,3 +208,5 @@ So the question is, how do you install the *Language Servers* you want to get al
 that you expect from a full blown IDE like VScode or Intellij? Right now all we have is a client 
 implementing Language Server Protocol, but remember we still need a server that provides us (the client)
 with the response.
+
+### Completion menu with LSP
