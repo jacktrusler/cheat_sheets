@@ -154,22 +154,26 @@
           <img class="logo-pic pic-border" src="images/Vi.jpg" />
         </div>
         <p class="section-desc">
-          The text editor that caused us to start down this twisted (righteous?) path was called vi, written
-          by Bill Joy in 1976. This was the <b>vi(sual)</b> mode for a line editor called <b>ex</b>, and was released
-          as part of the first Berkely Software Distribution (BSD) / Unix release in March 1978.
+          The text editor that caused us to start down this twisted (righteous?) path was called Vi, written by Bill Joy
+          in 1976. This was the <b>Vi(sual)</b> mode for a line editor called <b>Ex</b>, and was released as part of the
+          first Berkely Software Distribution (BSD) / Unix release in March 1978. Ex in the form shipped with Vi was
+          also written by Bill Joy, but had some features influenced from Charles Haley, who modified <b>Ed</b> calling
+          it <b>Em</b>.
+          <a href="http://roguelife.org/~fujita/COOKIES/HISTORY/1BSD/exrefm.pdf" target="_blank"
+            class="footnote">[1]</a>
         </p>
 
-        <blockquote cite="https://www.computerhope.com/unix/uex.htm">&emsp;"<b class="flex-inline">ex</b> stands for
-          extended,
-          because it was originally an extension of the simple line editor <b class="flex-inline">ed</b>. Similarly,
-          "vi" stands for visual, because vi is the "visual" (full-screen) editing mode, which was eventually added to
-          ex.
+        <blockquote cite="https://www.computerhope.com/unix/uex.htm">&emsp;"<b class="flex-inline">
+            Ex</b> stands for extended, because it was originally an extension of the simple line editor <b
+            class="flex-inline">Ed</b>. Similarly, "Vi" stands for Visual, because Vi is the "Visual" (full-screen)
+          editing mode, which was eventually added to ex.
           <p style="margin-bottom: 0">
-            &emsp;The commands ex and vi point to the same program, started in different modes. You can start ex by
-            running
-            vi -e, or you can start vi by running ex -v. Additionally, from within ex, you can start vi with the visual
-            command
-            (or vi for short). From inside vi, you can start ex with the command Q."</p>
+            &emsp;The commands Ex and Vi point to the same program, started in different modes. You can start ex by
+            running <span class="code-span">vi -e</span>, or you can start Vi by running <span class="code-span">ex
+              -v</span>. Additionally, from within Ex, you can start Vi with the <span class="code-span">visual</span>
+            command (or <span class="code-span">vi</span> for short). From inside Vi, you can start Ex with the command
+            <span class="code-span">Q</span>."
+          </p>
           <a href="https://www.computerhope.com/unix/uex.htm" target="_blank" class="quote">
             -- computerhope.com
           </a>
@@ -277,7 +281,7 @@
             <td>scroll downup half a screen</td>
           </tr>
           <tr>
-            <td>ctrl-f ctrl-b</td>
+            <td>ctrl-f &nbsp; ctrl-b</td>
             <td>page forward/backward a full screen</td>
           </tr>
           <tr>
@@ -310,7 +314,6 @@
           <a class="section-desc" href="https://www.atmos.albany.edu/daes/atmclasses/atm350/vi_cheat_sheet.pdf">Here is
             a large list of Vi commands</a><span class="section-desc"> to help you on your Vi journey.</span>
         </p>
-
       </div>
 
       <div class="section">
@@ -323,39 +326,138 @@
         </div>
         <p class="section-desc">
           <b>V</b>i <b>IM</b>proved was influenced from Stevie (<b>ST</b> <b>E</b>ditor for <b>VI</b>
-          <b>E</b>nthusiasts) written by
-          Tim Thompson but I couldn't find much in terms of the history of Stevie except for changing undo
-          functionality. It seems that a vast majority of what makes Vim, Vim is Bram Moolenaar in 1991. Here's the
-          wikipedia summary on Bram:
+          <b>E</b>nthusiasts) written by Tim Thompson but I couldn't find much in terms of the history of Stevie except
+          for changing undo functionality. It seems that a vast majority of what makes Vim, Vim is Bram Moolenaar. This
+          is the wikipedia summary on Bram:
         </p>
 
-        <blockquote cite="https://en.wikipedia.org/wiki/Bram_Moolenaar">&emsp;"<b class="flex-inline">
-            Bram Moolenaar is a Dutch computer programmer and an active member of the open-source software community. He
-            is the original author, maintainer, release manager, and benevolent dictator for life of Vim[1] a
-            vi-derivative text editor that is very popular among programmers and power users. From July 2006 until
-            September 2021 Moolenaar was employed by Google working in the Zürich office.[2] He was able to spend part
-            of his time maintaining Vim.[3]</b>
+        <blockquote cite="https://en.wikipedia.org/wiki/Bram_Moolenaar">&emsp;
+          "Bram Moolenaar is a Dutch computer programmer and an active member of the open-source software community. He
+          is the original author, maintainer, release manager, and benevolent dictator for life of Vim a vi-derivative
+          text editor that is very popular among programmers and power users. From July 2006 until September 2021
+          Moolenaar was employed by Google working in the Zürich office. He was able to spend part of his time
+          maintaining Vim."
           <a href="https://en.wikipedia.org/wiki/Bram_Moolenaar" target="_blank" class="quote">
             -- wikipedia.org
           </a>
         </blockquote>
 
         <p class="section-desc">
-          Vim is massively different from Vi, it has a much larger (like seriously there's so many new features) depth
-          of new
-          functionality, so much that i'm going to miss probably 90% of it, but here are some of the major differences:
-
-        <ul class="list">
-          <li>USER INTERFACE -- buffers / windows / tabs </li>
-          <li>MODES -- normal / insert / visual / terminal / command</li>
-          <li>COLORS -- Syntax highlighting / themes</li>
-          <li>GENERAL FUNCTIONALITY -- jump list / registers / undo history / code folding</li>
-          <li>MOTIONS -- new combinations introduced to move around the page and edit text</li>
-          <li>KEYMAPS -- customizable ways to automate your vim experience</li>
-          <li>PLUGINS -- the true next level of Vim written by users</li>
-        </ul>
+          Vim was released in 1991, 15 years after Vi and is massively different from Vi, it has a much larger (like
+          seriously there's so many new features) depth of new functionality, so much that i'm going to miss probably
+          90% of it, but here are some of the major differences:
         </p>
 
+        <table class="gruv-green">
+          <tr>
+            <td>Interface</td>
+            <td>buffers / windows / tabs </td>
+          </tr>
+          <tr>
+            <td>Modes</td>
+            <td>normal / insert / visual / terminal / command / replace</td>
+          </tr>
+          <tr>
+            <td>Colors</td>
+            <td>syntax highlighting / themes</td>
+          </tr>
+          <tr>
+            <td>Functionality</td>
+            <td>jump list / registers / undo history / code folding</td>
+          </tr>
+          <tr>
+            <td>Motions</td>
+            <td>new combinations introduced to move around the page and edit text</td>
+          </tr>
+          <tr>
+            <td>Keymaps</td>
+            <td>customizable ways to automate your vim experience</td>
+          </tr>
+          <tr>
+            <td>Plugins</td>
+            <td>the true next level of Vim written by users</td>
+          </tr>
+        </table>
+
+        <p class="section-desc">
+          While many of these changes are built in, other changes are made possible by the introduction of vimscript,
+          which is a built in scripting language written by Bram enabling you to run Ex and Vim commands automatically
+          when Vim starts up, or execute functions during runtime. The place to usually start with vimscript is in
+          the .vimrc file. <span id="vimrc" onclick="downloadVimrc()">Click to download an example .vimrc.</span> The
+          vimrc file should be named <span class="code-span">.vimrc</span> and placed in the <span
+            class="code-span">$HOME</span> directory.
+        </p>
+
+        <span class="code">:source</span>
+        <p class="section-desc">
+          Sources the file, which means it reads the Ex commands from the current buffer, optionally you can add a
+          filename to source a different file, adding % says to source current file. <span class="code-span">:so</span>
+          is the shortcut.
+        </p>
+
+        <table>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+          </tr>
+
+          <tr>
+            <td>di[w t p ) } " ' `]</td>
+            <td>delete in, can delete in w(ord), t(ag), p(aragrphs), )}(blocks), or "`'(quotes)</td>
+          </tr>
+          <tr>
+            <td>V</td>
+            <td>visually select whole line, enters Visual Line mode. Continue selecting with movement</td>
+          </tr>
+          <tr>
+            <td>"[register]y</td>
+            <td>yank selection to register [0-9][a-z]</td>
+          </tr>
+          <tr>
+            <td>"[register]p</td>
+            <td>paste from register [0-9][a-z]</td>
+          </tr>
+          <tr>
+            <td>u &nbsp Crtl-r</td>
+            <td>undo / redo, traverses the undo tree</td>
+          </tr>
+          <tr>
+            <td>R</td>
+            <td>Enter replace mode, type to continuously replace</td>
+          </tr>
+          <tr>
+            <td>:![shell command]</td>
+            <td>run shell commands in vim</td>
+          </tr>
+          <tr>
+            <td>Ctrl + o &nbsp Ctrl + i</td>
+            <td>jump backward/forward in jump list</td>
+          </tr>
+          <tr>
+            <td>:term</td>
+            <td>opens a terminal window in terminal mode</td>
+          </tr>
+          <tr>
+            <td>m[char] &nbsp '[char]</td>
+            <td>mark a location in the file using m / jump to mark location using ' (doesn't affect jump list)</td>
+          </tr>
+          <tr>
+            <td>q[char] &nbsp @[char]</td>
+            <td>Record a macro using q, use the macro using @</td>
+          </tr>
+          <tr>
+            <td>:h [keyword]</td>
+            <td>search for keyword in all the vim docs</td>
+          </tr>
+        </table>
+
+        <p class="section-desc">
+          There is an almost endless sea of vim motions and commands, for brevity I added some that show some of the
+          powerful features of Vim, and that I use often. For a more extensive list here's a <a class="section-desc"
+            href="https://vim.rtorr.com/">cheat sheet of Vim commands.</a> I wouldn't recommend trying to
+          memorize these, just something to give you a reference point and maybe some new ideas of
+          motions or commands to try.
+        </p>
       </div>
 
       <div class="section">
@@ -366,15 +468,84 @@
         <div class="logo-pic-container">
           <img class="neovim-pic" src="images/Neovim.svg" />
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
-          laborum.</p>
+        <p class="section-desc">
+          Neovim was created as a community fork for Vim with the goals of making a faster, more collaborative
+          and more user friendly and configurable Vim. It can basically be downloaded and run on any operating
+          system and has hundreds of open source projects currently in the ecosystem.
+
+          Here's the about on Github:
+        </p>
+        <blockquote>
+          Vim-fork focused on extensibility and usability
+        </blockquote>
+
+        <p class="section-desc">
+          And here's the first paragraph of the README:
+        </p>
+
+        <blockquote>
+          Neovim is a project that seeks to aggressively refactor Vim in order to:
+          <ul>
+            <li>Simplify maintenance and encourage contributions</li>
+            <li>Split the work between multiple developers</li>
+            <li>Enable advanced UIs without modifications to the core</li>
+            <li>Maximize extensibility</li>
+          </ul>
+          <a href="https://www.github.com/neovim/neovim" target="_blank" class="quote">
+            -- Neovim
+          </a>
+        </blockquote>
+
+        <p class="section-desc">
+          I think Neovim does a great job on delivering on all of these goals, and a large part of the reason
+          is because of their decision to use Lua.
+        </p>
+
+        <span class="small-sub">What is Lua?</span>
+        <p class="section-desc">
+          Lua is a language created in Brazil in 1993.
+          The Lua language was incorporated into Neovim for 5 main reasons.
+        </p>
+        <table class="gruv-green">
+          <tr>
+            <td>Simplicity</td>
+            <td>reference manual is only 100 pages, and covers the entire language, standard lib, and C api</td>
+          </tr>
+          <tr>
+            <td>Small size</td>
+            <td>200kb binary size for Linux</td>
+          </tr>
+          <tr>
+            <td>Portability</td>
+            <td>Lua is implemented in ISO C, which can be used basically anywhere</td>
+          </tr>
+          <tr>
+            <td>Embeddability</td>
+            <td>Lua functions can be used inside of vimscript</td>
+          </tr>
+          <tr>
+            <td>Speed</td>
+            <td>LuaJIT performs comparibly with C, does especially well with table lookups (which are common)</td>
+          </tr>
+        </table>
+        <a href="https://www.youtube.com/watch?v=IP3J56sKtn0" target="_blank" class="">
+          (Most of the notes are from this video)
+        </a>
+        <p class="section-desc">
+          For a text editor, these goals seem like an obvious win. Simplicity is really also key because it
+          allows developers to quickly get up and running with a relatively popular and simple language instead
+          of having to learn vimscript which only really has one use, which is to extend vim.
+        </p>
+        <p class="section-desc">
+          Thanks for reading! Now go out and get your Vim on, however you see fit.
+        </p>
       </div>
+
     </div>
   </main>
+  <div class="footer">
+    ALUG 2023
+  </div>
   <!-- Javascript -->
   <script src="vim.js"></script>
 </body>

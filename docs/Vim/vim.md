@@ -27,9 +27,6 @@ as part of the first Berkely Software Distribution (BSD) / Unix release in March
 ## Vi
 "The commands ex and vi point to the same program, started in different modes. You can start ex by running vi -e, or you can start vi by running ex -v. Additionally, from within ex, you can start vi with the visual command (or vi for short). From inside vi, you can start ex with the command Q."
 
-I found some preserved source code for a legacy version of vi:  
-
-    https://github.com/n-t-roff/heirloom-ex-vi  
 Most Linux distros come with a binary called vi but it is really vim in disguise with a few features
 taken out. 
 
@@ -38,7 +35,9 @@ taken out.
 I'm going to use Vi on BSD because it feels like Bill Joy would've liked it that way, plus installing it
 on Linux is actually pretty annoying because of terminal features.
 
-[Here's a list of original Vi commands](https://www.cs.colostate.edu/helpdocs/vi.html#:~:text=To%20use%20vi%20on%20a,which%20you%20may%20enter%20text.)
+(Q to go into Ex program and vi from ex to go into Vi)
+
+[Here's a list of original Vi commands](https://www.atmos.albany.edu/daes/atmclasses/atm350/vi_cheat_sheet.pdf)
 
 commands that work that list missed: 
 
@@ -75,6 +74,8 @@ functionality, so much that i'm going to miss probably 90% of it, but here are s
 5. MOTIONS -- new combinations introduced to move around the page and edit text
 6. KEYMAPS -- customizable ways to automate your vim experience
 7. PLUGINS -- the true next level of Vim written by users
+
+Vim on startup looks at its runtime path and searches for a 
 
 Here's an example of a .vimrc (mine)
 
@@ -210,3 +211,10 @@ implementing Language Server Protocol, but remember we still need a server that 
 with the response.
 
 ### Completion menu with LSP
+
+
+### Extras ed/vi/vim/nvim
+
+I found some preserved source code for a legacy version of vi:  
+
+    https://github.com/n-t-roff/heirloom-ex-vi  
