@@ -313,19 +313,21 @@ blockquote {
 
 .box {
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 
 .dirs-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 
 .dirs-title {
   padding: 16px;
   font-size: 1.5rem;
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 .dirs {
@@ -347,6 +349,7 @@ blockquote {
 .list {
   color: var(--green);
   font-size: 1.3rem;
+  list-style: none;
 }
 
 .exiting-pic {

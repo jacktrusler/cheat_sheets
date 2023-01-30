@@ -76,11 +76,9 @@
           <img class="logo-pic pic-border" src="images/EDitor.jpg" />
         </div>
         <p class="section-desc">
-          Maybe unsurprisingly, the story of vi starts here. Ed was
-          one of the first text editors, it was developed by Ken Thompson in August 1969. It was influenced by
-          qed text editor, which was developed at UC Berkeley, Ken's alma mater. Thompson implemented regular
-          expressions on qed, which was notable.
-
+          Maybe unsurprisingly, the story of vi starts here. Ed is the first text editor in our story, it was developed
+          by Ken Thompson in August 1969. It was influenced by qed text editor, which was developed at UC Berkeley,
+          Ken's alma mater. Thompson implemented regular expressions on qed, which was notable.
           Ed is a line based text editor with no GUI, just simple command line options.
           Start ed with a prompt:
           <span class="code">ed -p ">> "</span>
@@ -100,7 +98,7 @@
 
           <tr>
             <td>[.]</td>
-            <td>places cursor at line number ("." meaning any number)</td>
+            <td>places cursor at line number "." meaning any number)</td>
           </tr>
           <tr>
             <td>[.,.]a</td>
@@ -141,9 +139,9 @@
         </table>
 
         <p>
-        <a class="section-desc" href=https://www.computerhope.com/unix/ued.htm>Here is a comprehensive list of Ed
-          commands</a><span class="section-desc"> if for some
-          crazy reason you want to become an Ed legend.</span>
+          <a class="section-desc" href=https://www.computerhope.com/unix/ued.htm>Here is a comprehensive list of Ed
+            commands</a><span class="section-desc"> if for some
+            crazy reason you want to become an Ed legend.</span>
         </p>
       </div>
 
@@ -161,51 +159,56 @@
           as part of the first Berkely Software Distribution (BSD) / Unix release in March 1978.
         </p>
 
-        <blockquote cite="https://www.computerhope.com/unix/uex.htm">&emsp;"<b class="flex-inline">ex</b> stands for extended,
+        <blockquote cite="https://www.computerhope.com/unix/uex.htm">&emsp;"<b class="flex-inline">ex</b> stands for
+          extended,
           because it was originally an extension of the simple line editor <b class="flex-inline">ed</b>. Similarly,
           "vi" stands for visual, because vi is the "visual" (full-screen) editing mode, which was eventually added to
-          ex. 
+          ex.
           <p style="margin-bottom: 0">
-          &emsp;The commands ex and vi point to the same program, started in different modes. You can start ex by running 
-          vi -e, or you can start vi by running ex -v. Additionally, from within ex, you can start vi with the visual command
-          (or vi for short). From inside vi, you can start ex with the command Q."</p>
+            &emsp;The commands ex and vi point to the same program, started in different modes. You can start ex by
+            running
+            vi -e, or you can start vi by running ex -v. Additionally, from within ex, you can start vi with the visual
+            command
+            (or vi for short). From inside vi, you can start ex with the command Q."</p>
           <a href="https://www.computerhope.com/unix/uex.htm" target="_blank" class="quote">
             -- computerhope.com
           </a>
         </blockquote>
 
         <p class="section-desc">
-        On top of adding a GUI, Vi introduced a whole new slew of ideas and commands to the text editing experience. Some of these
-        came from ex, and some were for Vi itself. Also instead of editing out whole lines, you can now edit indivudial characters 
-        in the lines. There are 3 modes in Vi: 
+          On top of adding a GUI, Vi introduced a whole new slew of ideas and commands to the text editing experience.
+          Some of these
+          came from ex, and some were for Vi itself. Also instead of editing out whole lines, you can now edit
+          indivudial characters
+          in the lines. There are 3 modes in Vi:
         </p>
         <ul class="list">
-          <li>Command mode &nbsp;&nbsp;(Normal mode in Vim)</li>
-          <li>Insert mode &emsp;&emsp;&nbsp;&nbsp;(Insert mode in Vim)</li>
-          <li>Last Line mode &emsp;(Command mode in Vim)</li>
+          <li>Command mode</li>
+          <li>Insert mode</li>
+          <li>Last Line mode</li>
         </ul>
         <p class="section-desc">
-        Command mode is the mode you are in when you enter Vi, it allows you to use motions and movement commands <b>(hjkl)</b> to move around the page.
-        </p>
-
-        <div class="dirs-box">
-          <span class="dirs-title">Vi Movement</span>
-          <div class="dirs">
-            <div>k</div>
-            <div class="h-l">
-              <span>h</span>
-              <span>l</span>
-            </div>
-            <div>j</div>
-          </div>
-        </div>
-
-        <p class="section-desc">
-          Entering insert mode requires an input command in Command mode, commonly these are <b>i</b> (insert), <b>a</b> (append), <b>c</b> (change), <b>s</b> (substitute), <b>o</b> (open new line).
+          Command mode is the mode you are in when you enter Vi, it allows you to use motions and movement commands
+          <b>(hjkl)</b> to move around the page.
+          Entering insert mode requires an input command in Command mode, commonly these are <b>i</b> (insert), <b>a</b>
+          (append), <b>c</b> (change), <b>s</b> (substitute), <b>o</b> (open new line).
           Entering last line mode requires typing colon <b>":"</b> this allows you to use <b>Ex</b> commands.
         </p>
 
         <div class="box">
+          <div class="dirs-box">
+            <span class="dirs-title">Vi Movement</span>
+            <div class="dirs">
+              <div>k</div>
+              <div class="h-l">
+                <span>h</span>
+                <span>l</span>
+              </div>
+              <div>j</div>
+            </div>
+          </div>
+
+
           <div class="dirs-box">
             <span class="dirs-title">Insert Mode</span>
             <div class="dirs">
@@ -218,6 +221,7 @@
               </div>
             </div>
           </div>
+
           <div class="dirs-box">
             <span class="dirs-title">Last Line Mode</span>
             <div class="dirs">
@@ -229,7 +233,8 @@
         </div>
 
         <p class="section-desc">
-          Now for a timeless meme in the Vim community. Hopefully I can save one more poor soul from an almost certain fate.
+          Now for a timeless meme in the Vim community. Hopefully I can save one more poor soul from an almost certain
+          fate.
         </p>
         <div class="logo-pic-container">
           <img class="exiting-pic pic-border" src="images/exiting_vim.jpg" />
@@ -237,7 +242,7 @@
 
         <p class="section-desc">
           <span class="code"> :q! </span>
-          Quits Vi, the ! makes it so it quits even if you didn't write the file. The : puts you in Last Line mode. 
+          Quits Vi, the ! makes it so it quits even if you didn't write the file. The : puts you in Last Line mode.
           <span class="code"> :wq </span>
           Writes the file and quits.
           <span class="code"> :x </span>
@@ -253,49 +258,58 @@
 
           <tr>
             <td>[.]G</td>
-            <td>places cursor at line number ("." meaning any number)</td>
+            <td>places cursor at line number "." meaning any number)</td>
           </tr>
           <tr>
-            <td>a</td>
-            <td>append after cursor (shift-A --> append to end of line)</td>
+            <td>dd</td>
+            <td>delete whole line</td>
           </tr>
           <tr>
-            <td>i</td>
-            <td>insert before cursor (shift-o --> above)</td>
+            <td>yy</td>
+            <td>yank whole link</td>
           </tr>
           <tr>
-            <td>[.,.]d</td>
-            <td>delete line(s) (default: last line of file)</td>
+            <td>p</td>
+            <td>paste</td>
           </tr>
           <tr>
-            <td>[.,.]m[.]</td>
-            <td>move line(s) from [range]m[new location]</td>
+            <td>ctrl-d &nbsp; ctrl-u</td>
+            <td>scroll downup half a screen</td>
           </tr>
           <tr>
-            <td>[.,.]p</td>
-            <td>print range, current address is set to last line printed</td>
+            <td>ctrl-f ctrl-b</td>
+            <td>page forward/backward a full screen</td>
           </tr>
           <tr>
-            <td>[.,.]n</td>
-            <td>print all with line numbers, current address is set to last line printed</td>
+            <td>f[char]</td>
+            <td>finds [char] in current line. ";" to repeat "," to go back.</td>
           </tr>
           <tr>
-            <td>r [filename]</td>
-            <td>reads the file, and outputs the number of bytes</td>
+            <td>u</td>
+            <td>undo, twice to redo</td>
           </tr>
           <tr>
-            <td>wq [filename]</td>
-            <td>writes the file, outputs the number of bytes, then quits</td>
+            <td>J</td>
+            <td>join lines</td>
           </tr>
           <tr>
-            <td>g/re/p</td>
-            <td><b>g</b>lobally find lines by <b>re</b>gular expression and <b>p</b>rint. (Also try g/re/n)</td>
+            <td>}{</td>
+            <td>jump paragraphs</td>
           </tr>
           <tr>
-            <td>,s/old/new/g</td>
+            <td>/ or ?</td>
+            <td>search forward or backward</td>
+          </tr>
+          <tr>
+            <td>:%s/old/new/g</td>
             <td>replace all occurances of [old] with [new]</td>
           </tr>
         </table>
+
+        <p>
+          <a class="section-desc" href="https://www.atmos.albany.edu/daes/atmclasses/atm350/vi_cheat_sheet.pdf">Here is
+            a large list of Vi commands</a><span class="section-desc"> to help you on your Vi journey.</span>
+        </p>
 
       </div>
 
@@ -307,13 +321,43 @@
         <div class="logo-pic-container">
           <img class="logo-pic" src="images/Vim.svg" />
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
-          laborum.</p>
+        <p class="section-desc">
+          <b>V</b>i <b>IM</b>proved was influenced from Stevie (<b>ST</b> <b>E</b>ditor for <b>VI</b>
+          <b>E</b>nthusiasts) written by
+          Tim Thompson but I couldn't find much in terms of the history of Stevie except for changing undo
+          functionality. It seems that a vast majority of what makes Vim, Vim is Bram Moolenaar in 1991. Here's the
+          wikipedia summary on Bram:
+        </p>
+
+        <blockquote cite="https://en.wikipedia.org/wiki/Bram_Moolenaar">&emsp;"<b class="flex-inline">
+            Bram Moolenaar is a Dutch computer programmer and an active member of the open-source software community. He
+            is the original author, maintainer, release manager, and benevolent dictator for life of Vim[1] a
+            vi-derivative text editor that is very popular among programmers and power users. From July 2006 until
+            September 2021 Moolenaar was employed by Google working in the Zürich office.[2] He was able to spend part
+            of his time maintaining Vim.[3]</b>
+          <a href="https://en.wikipedia.org/wiki/Bram_Moolenaar" target="_blank" class="quote">
+            -- wikipedia.org
+          </a>
+        </blockquote>
+
+        <p class="section-desc">
+          Vim is massively different from Vi, it has a much larger (like seriously there's so many new features) depth
+          of new
+          functionality, so much that i'm going to miss probably 90% of it, but here are some of the major differences:
+
+        <ul class="list">
+          <li>USER INTERFACE -- buffers / windows / tabs </li>
+          <li>MODES -- normal / insert / visual / terminal / command</li>
+          <li>COLORS -- Syntax highlighting / themes</li>
+          <li>GENERAL FUNCTIONALITY -- jump list / registers / undo history / code folding</li>
+          <li>MOTIONS -- new combinations introduced to move around the page and edit text</li>
+          <li>KEYMAPS -- customizable ways to automate your vim experience</li>
+          <li>PLUGINS -- the true next level of Vim written by users</li>
+        </ul>
+        </p>
+
       </div>
+
       <div class="section">
         <hr>
         <span class="section-title">A community approaches... <b>NeoVim</b></span>

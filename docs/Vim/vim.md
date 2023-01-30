@@ -69,7 +69,7 @@ Vim is massively different from Vi, it has a crazy (like seriously there's so ma
 functionality, so much that i'm going to miss probably 90% of it, but here are some of the major differences:  
 
 1. USER INTERFACE -- buffers / windows / tabs 
-2. MODES -- normal / insert / visual / terminal / command
+2. MODES -- normal / insert / visual / terminal / command / replace
 3. COLORS -- Syntax highlighting / themes
 4. GENERAL FUNCTIONALITY -- jump list / registers / undo history / code folding
 5. MOTIONS -- new combinations introduced to move around the page and edit text

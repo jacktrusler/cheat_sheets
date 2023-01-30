@@ -4,27 +4,27 @@ const moon = document.getElementById("moon");
 
 const storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 if (storedTheme) {
-    document.documentElement.setAttribute('data-theme', storedTheme);
+  document.documentElement.setAttribute('data-theme', storedTheme);
 }
 
 const cT = document.documentElement.getAttribute("data-theme");
-if (cT === "dark") {moon.setAttribute("class", "moon hidden");}
-if (cT === "light") {sun.setAttribute("class", "sun hidden");}
+if (cT === "dark") { moon.setAttribute("class", "moon hidden"); }
+if (cT === "light") { sun.setAttribute("class", "sun hidden"); }
 toggle.onclick = function() {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    let targetTheme = "light";
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  let targetTheme = "light";
 
-    if (currentTheme === "light") {
-      targetTheme = "dark";
-      moon.setAttribute("class", "moon hidden")
-      sun.setAttribute("class", "sun");
-    } else {
-      sun.setAttribute("class", "sun hidden");
-      moon.setAttribute("class", "moon");
-    }
+  if (currentTheme === "light") {
+    targetTheme = "dark";
+    moon.setAttribute("class", "moon hidden")
+    sun.setAttribute("class", "sun");
+  } else {
+    sun.setAttribute("class", "sun hidden");
+    moon.setAttribute("class", "moon");
+  }
 
-    document.documentElement.setAttribute('data-theme', targetTheme);
-    localStorage.setItem('theme', targetTheme);
+  document.documentElement.setAttribute('data-theme', targetTheme);
+  localStorage.setItem('theme', targetTheme);
 };
 
 
