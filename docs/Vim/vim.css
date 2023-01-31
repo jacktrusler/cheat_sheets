@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -111,12 +112,12 @@ body {
 }
 
 html[data-theme='light'] {
-    --bg: #fbf1c7;
+    --bg: #f9f5d7;
     --bg1: #ebdbb2;
     --bg2: #d5c4a1;
     --fg: #3c3836;
     --red: #9d0006;
-    --green: #79990e;
+    --green: #79740e;
     --yellow: #B57614;
     --blue: #076678;
     --purple: #8f3f71;
@@ -129,13 +130,13 @@ html[data-theme='dark'] {
     --bg: #282828;
     --bg1: #3c3836;
     --bg2: #504945;
-    --fg: #ebdbb2;
-    --red: #cc241d;
+    --fg: #fbf1c7;
+    --red: #fb4934;
     --green: #b8bb26;
-    --yellow: #d79921;
+    --yellow: #fabd2f;
     --blue: #83a598;
-    --purple: #b16286;
-    --aqua: #689d6a;
+    --purple: #d3869b;
+    --aqua: #8ec07c;
     --orange: #fe8019;
     --gray: #a89984;
 }
@@ -242,10 +243,9 @@ blockquote {
 }
 
 .title {
-  -webkit-text-stroke: 2px black;
   color: #019833;
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .subtitle{
