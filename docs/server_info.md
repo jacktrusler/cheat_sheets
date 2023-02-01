@@ -141,9 +141,43 @@ chgrp a command meaning **ch**ange **gr**ou**p**
 install acme.sh for certs.   
 [Install Guide](https://decovar.dev/blog/2021/04/05/acme-sh-instead-of-certbot/)
 
+The general overview is this, acme.sh is a script that runs to ask a certificate authority to confirm
+the location of a website. It does so by sending a token to the .well-known/acme-challenge 
+directory, then whatever certificate authority you're using (zeroSSL by default, I changed it to Let's Encrypt) 
+will try to reach the token, if it succeeds you get a certificate. Change cert authority with this command:  
+```
+acme.sh --set-default-ca  --server  letsencrypt
+```
+After you get a certificate, you need to place them in a location where nginx can find them. 
+I placed mine in:   
+```
+/home/jack/www-data/certs
+```
+finally change and reload Nginx conf:  
+```nginx
+server {
+  listen 80;
+  server_name www.jacktrusler.com jacktrusler.com;
+  return 301 https://jacktrusler.com;
+}
+
+server {
+  listen 443 ssl http2;
+  server_name jacktrusler.com;
+  ssl_certificate /home/jack/www-data/certs/jacktrusler.com/fullchain.pem;
+  ssl_certificate_key /home/jack/www-data/certs/jacktrusler.com/key.pem;
+
+  location / {
+  root /usr/local/www/jacktrusler.com;
+  index index.html index.htm;
+  }
+}
+```
+Note: `/usr/local/www` is the preferred path for freeBSD to put www files. Linux uses `/var/www` by convention.
+
 ## How to start an email server
 
-Linode server running cyberpanel.  (I used AlmaLinux, a Redhat distro, cyberpanel doesn't work with Centos9 stream).  
+Linode server running cyberpanel.  (I used AlmaLinux, a RHEL distro, cyberpanel doesn't work with Centos9 stream).  
 [Youtube Guide](https://www.youtube.com/watch?v=8G93NVWkXZk)  
 
 ## Logging Services
@@ -152,8 +186,12 @@ or from just the current boot.
 `journalctl -u service-name.service -b`
 
 ## Checking Connections
-To find open ports
-`netstat -tulnp`
+To find open ports  
+`netstat -tulnp`  
+To see if a website is running  
+`nslookup <website>`  
+If you don't have nslookup install it with  
+`dnf install bind-utils`
 
 ## Miscellaneous
 Turn off water droplet sound in applications
