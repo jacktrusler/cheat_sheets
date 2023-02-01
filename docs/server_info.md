@@ -92,6 +92,50 @@ ssh -i keyfile root@address
 ssh-copy-id -i ed_25519.pub <host>@<domain>  
 ```
 
+## Permissions
+Every file on an ext filesystem has:
+
+1. An owner user  
+2. An owner group  
+3. Permissions for this user, this group and everybody else.  
+
+If you're setting rwx group permissions on a file, only the owner group of that file can read/write/execute it. You can however change who owns the files or directories with the chown and chgrp commands.
+
+chmod means **ch**ange **mod**e...  
+| read    | write    | execute    |
+|---------------- | --------------- | --------------- |
+| 4    | 2    | 1    |
+| r    | w    | x    |
+  
+`chmod [options] permissions [target]`  
+order is user/group/others so `chmod 754 [target]`  
+**user**: 4 + 2 + 1 read + write + execute  
+**group**: 4 + 1 read + execute  
+**others**: 4 read  
+NOTE: `chmod 700 <target>` removes all permissions from group, others  
+  
+The semantic version is `chmod u=rwx,g=rx,o=r [target]`  
+**user**: u=rwx read + write + execute  
+**group**: g=rx read + execute  
+**others**: o=r read  
+NOTE: `chmod go= <target>` removes all permissions from group, others   
+
+For the number version it is perhaps easier to think of the permissions as bits:  
+
+    100 - read  
+    010 - write  
+    001 - execute  
+
+chown a command meaning **ch**ange **own**er
+
+    chown <user> <file1> <file2>...
+    chown -R <user> <somedir>...
+
+chgrp a command meaning **ch**ange **gr**ou**p**
+
+    chgrp <group> <file1> <file2>...
+    chgrp -R <group> <somedir>
+    
 ## How to get HTTPS certs
 
 install acme.sh for certs.   

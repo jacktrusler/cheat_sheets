@@ -17,5 +17,14 @@ A lot of stuff gets downloaded into the `/usr/` directory
 
     /usr/local/etc   (kinda similar to etc in linux)
 
+## Commands
+
+    pw groupadd
+    pw user show <user>
+    pw group show <user>
+    pw usermod -G <group> <user>
+    pw groupmod <group> -M <user>
+
 ### Misc
-`ls -G` to colorize your directories
+`ls -G` to colorize your directories.
+`service <name> restart` service runs the init script if provided by <name> program.

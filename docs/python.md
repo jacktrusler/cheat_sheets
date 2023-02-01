@@ -56,6 +56,16 @@ The way I set up my python virtual environments is as follows (method #1 from th
                │
                └── venv_second/
 
+### pip install
+If you have activated a virtual environment, pip will install packages into your venv folder, if you
+have not then pip will install programs into a default location on your computer. 
+
+    MacOS: /usr/local/lib/python2.7/site-packages
+    Fedora37: $HOME/.local/lib/python3.11/site-packages
+
+Note: MacOS will install to a different location if you specify pip3. The way to find where a specific 
+package resides is by using the `pip show <package name>` command.
+
 ### What the heck is `if __name__ == "__main__"`
 
 This is a way of running python as a script. When you run a script in the terminal you run it in the top-level code environment. So any code after this conditional only runs when you are in a top-level code environment. I.e a shell, where the automatically defined variable `__name__ == '__main__'`
