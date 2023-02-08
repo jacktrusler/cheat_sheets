@@ -5,6 +5,12 @@
 ## Settings / Plugins
 `ctrl + alt + s` opens Settings
 
+**Changing Colors:**  
+Search `colors`, then go to Editor -> Color Scheme -> General
+
+Editor -> Caret Row
+Text -> Folded Text
+
 ### Editor Section
 `Smart Keys` For automatic typing, I turned off auto closing pairs and insert pair '}' on Enter.
 Plugins is one of the options, Marketplace and Installed tabs at the top. 
@@ -25,5 +31,7 @@ gives a bottom bar with plugin info, spacing, branch name, line number and more.
 |`ctrl + shift + f` | search for any string match in whole repository | 
 |`alt + 9` | git menu | 
 |`alt + 1` | project window | 
+|`ctrl + ``| switch theme, check keymaps |
+|`ctrl + shift + -`| close all folds, + to open all folds |
 
 
