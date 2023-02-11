@@ -3,21 +3,42 @@
 *How to be a Redhat aficionado*
 
 ## CentOS 9
-Why centOS 9? Stable and reliable, doesn't need to be updated often. I like Redhat. 
+Why centOS 9? Stable and reliable, doesn't need to be updated often. I like Redhat.  
 
-    ssh-copy-id -i ed_25519.pub <host>@<domain>  
-    dnf update
-    chsh -s /usr/bin/zsh
+### First steps:  
 
-Make sure to get the Extra Packages for Enterprise Linux on first use.
-
-    dnf config-manager --set-enabled crb
-    dnf install epel-release epel-next-release
-    rpm -ql package-name    #To find out where you installed something.
-
-Optionally install Development Tools
-
-    dnf group install "Development Tools"
+**Give ssh access from host PC to remote server.**
+```bash 
+ssh-keygen -t ed25519
+ssh -i keyfile root@address
+ssh-copy-id -i ed_25519.pub <host>@<domain>  
+```
+**Make sure to get the Extra Packages for Enterprise Linux on first use.**
+```bash
+dnf config-manager --set-enabled crb
+dnf install epel-release epel-next-release
+rpm -ql package-name    #To find out where you installed something.
+```
+**Download and use mlocate.**
+```bash
+dnf install mlocate
+updatedb
+```
+**Download a lot of soy**
+```bash
+dnf update -y && dnf install -y gcc g++ curl git neovim vim zsh wget nodejs npm
+chsh -s /usr/bin/zsh
+```
+**Optionally install Development Tools and Oh-My-Zsh**
+```bash
+dnf group install "Development Tools"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+**Add this line in .zshrc to stop auto updates**
+```bash
+zstyle ':omz:update' mode disabled # Must come before sourcing oh-my-zsh.sh
+source ~/.oh-my-zsh/oh-my-zsh.sh
+```
 
 ### System Info 
 2 ways to get os info. 
@@ -34,7 +55,7 @@ Hardware info
     sudo df -h          #storage used
 
 ### Swap Memory
-Sometimes you'll run out of RAM (if you bought the cheapest 1GB droplet and try to run soy :>) 
+Sometimes you'll run out of RAM (if you bought the cheapest 1GB droplet) 
 when trying to run basic tasks, the solution is to add swap memory. 
 
     dd if=/dev/zero of=/mnt/2GB.swap count=2048 bs=1024K                                                                     1 ↵
@@ -44,10 +65,12 @@ when trying to run basic tasks, the solution is to add swap memory.
 
 Then the tasks should run fine.   
 
-NOTE: Be careful with the dd if=/dev/zero command, this command 0's out your hard drive 
-(wipes it literally by flipping everything to 0) so make sure when you're using it you don't /dev/zero 
+NOTE: Be careful with the `dd if=/dev/zero` command, this command 0's out your hard drive 
+(wipes it literally by flipping everything to 0) so make sure when you're using it you don't `/dev/zero` 
 an important directory _smile_. In this case we're creating a swap file `mkswap` with 2GB worth of 
 space, filled with 0s, then changing permissions and turning the `swapon`.
+
+[Here's a great article on dd](https://www.baeldung.com/linux/dd-command)
 
 ## Important directories
 
@@ -104,13 +127,6 @@ sudo systemctl enable your.service
 - ${HOME}/.ssh            (holds keys for users ssh auth)
 ```
 
-Giving ssh access from host PC to remote server. 
-``` 
-ssh-keygen -t ed25519
-ssh -i keyfile root@address
-ssh-copy-id -i ed_25519.pub <host>@<domain>  
-```
-
 ## Permissions
 Every file on an ext filesystem has:
 
@@ -145,12 +161,12 @@ For the number version it is perhaps easier to think of the permissions as bits:
     010 - write  
     001 - execute  
 
-chown a command meaning **ch**ange **own**er
+`chown` a command meaning **ch**ange **own**er
 
     chown <user> <file1> <file2>...
     chown -R <user> <somedir>...
 
-chgrp a command meaning **ch**ange **gr**ou**p**
+`chgrp` a command meaning **ch**ange **gr**ou**p**
 
     chgrp <group> <file1> <file2>...
     chgrp -R <group> <somedir>

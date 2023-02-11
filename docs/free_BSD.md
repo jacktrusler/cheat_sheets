@@ -8,7 +8,7 @@ Brought to you by the boys (and girls) at Berkley, the Berkley Software Distribu
 Unix based OS, shares a general schmood with Linux.
 
     ssh-copy-id -i ed_25519.pub <host>@<domain>  
-    dnf update
+    sudo pkg [update | install | remove] <package name>
     chsh -s /usr/bin/zsh
 
 ## Important directories
