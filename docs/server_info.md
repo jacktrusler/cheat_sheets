@@ -3,7 +3,7 @@
 *How to be a Redhat aficionado*
 
 ## CentOS 9
-Why centOS 9? Stable and reliable, doesn't need to be updated often.  
+Why centOS 9? Stable and reliable, doesn't need to be updated often. I like Redhat. 
 
     ssh-copy-id -i ed_25519.pub <host>@<domain>  
     dnf update
@@ -31,6 +31,23 @@ Hardware info
     sudo lsblk          #list blocks  
     sudo fdisk -l       #more detailed partition data  
     sudo htop           #cpu & ram usage
+    sudo df -h          #storage used
+
+### Swap Memory
+Sometimes you'll run out of RAM (if you bought the cheapest 1GB droplet and try to run soy :>) 
+when trying to run basic tasks, the solution is to add swap memory. 
+
+    dd if=/dev/zero of=/mnt/2GB.swap count=2048 bs=1024K                                                                     1 ↵
+    mkswap /mnt/2GB.swap
+    chmod 600 /mnt/2GB.swap
+    swapon /mnt/2GB.swap
+
+Then the tasks should run fine.   
+
+NOTE: Be careful with the dd if=/dev/zero command, this command 0's out your hard drive 
+(wipes it literally by flipping everything to 0) so make sure when you're using it you don't /dev/zero 
+an important directory _smile_. In this case we're creating a swap file `mkswap` with 2GB worth of 
+space, filled with 0s, then changing permissions and turning the `swapon`.
 
 ## Important directories
 
@@ -82,10 +99,12 @@ sudo systemctl enable your.service
 **Others**
 
 ```
-- /home/                  (holds all users as root)
-- ~/.ssh                  (holds keys for users ssh auth)
+- /root/                  (holds root user)
+- /home/                  (holds other created users)
+- ${HOME}/.ssh            (holds keys for users ssh auth)
 ```
 
+Giving ssh access from host PC to remote server. 
 ``` 
 ssh-keygen -t ed25519
 ssh -i keyfile root@address
@@ -181,9 +200,12 @@ Linode server running cyberpanel.  (I used AlmaLinux, a RHEL distro, cyberpanel 
 [Youtube Guide](https://www.youtube.com/watch?v=8G93NVWkXZk)  
 
 ## Logging Services
-`journalctl -u service-name.service`  
-or from just the current boot.  
-`journalctl -u service-name.service -b`
+`/var/log` contains many of the systems log files.  
+To see the last 100 lines of system log info: `sudo tail -n -100 /var/log/messages`  
+
+Running daemons will often contain important info too. (like node processes, or nginx logs)  
+To see logs from running daemons: `journalctl -u service-name.service`  
+or from just the current boot: `journalctl -u service-name.service -b`
 
 ## Checking Connections
 To find open ports  
