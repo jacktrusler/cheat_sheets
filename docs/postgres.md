@@ -25,6 +25,7 @@
 
 ### Commands you will forget for sure and have to look up on a cheat sheet lmao
 [Good cheatsheet](https://postgrescheatsheet.com/#/databases)  
+
 | Command   | Description    |
 |--------------- | --------------- |
 | `\l`   | list databases   |

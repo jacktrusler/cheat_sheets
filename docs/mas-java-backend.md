@@ -134,8 +134,6 @@ enableDriver function is called in the TSHybridApiController which is then used 
     Integer tpId = EndpointUtils.getIntegerFromObject(transProviderId);
     Integer user = EndpointUtils.getIntegerFromObject(userId);
     if (tpId == null) {
-      // No TP Ids provided - cannot get driver for security reasons = There could be a TP seeking info of a driver
-      // that does not belong to his TP ID
       log.warn("No TP ID provided in the header");
       result.setResponseStatus(ResponseStatus.INVALID_VALUE.getCode());
     } else if(user == null) {
@@ -150,14 +148,12 @@ enableDriver function is called in the TSHybridApiController which is then used 
         Integer driverNum = EndpointUtils.getIntegerFromObject(exists);
         if (Objects.isNull(driverNum)) {
           log.error("Invalid driverId must be number");
-          //INVALID_VALUE because not a number
           result.setResponseStatus(ResponseStatus.INVALID_VALUE.getCode());
         } else {
           driverId = Optional.of(driverNum);
         }
       } else {
         log.error("Missing driver ID");
-        //MISSING_VALUE
         result.setResponseStatus(ResponseStatus.MISSING_VALUE.getCode());
         return result;
       }
@@ -341,3 +337,31 @@ to SQL queries.
 
 Spring framework provides a lot of functionality in creating database objects, defining endpoints, 
 and automatic method generation. 
+
+Example of a hibernate query: 
+```java
+@Query(
+      "Select new com.mas.db.jackson5.ActivityJoin(al.id, al.recordId, a.label) " +
+          "FROM " +
+          "ActivityLog AS al " +
+          "JOIN " +
+          "Activities AS a ON (a.id = al.id) " +
+          "WHERE al.recordId < 100 ")
+  public List<GamerJoin> findRecordsUnder100();
+```
+
+Hibernate uses objects that are persisted in memory to create queries that interact directly with 
+a relational database. In this example it uses 2 java objects -- ActivityLog.java and Activities.java 
+and then it uses a join object -- ActivityJoin.java 
+
+```java 
+@Getter
+@Setter
+@AllArgsConstructor
+public class ActivityJoin {
+  private Integer activityId;
+  private Integer recordId;
+  private String label;
+}
+```
+Hibernate 

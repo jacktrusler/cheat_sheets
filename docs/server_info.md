@@ -137,6 +137,7 @@ Every file on an ext filesystem has:
 If you're setting rwx group permissions on a file, only the owner group of that file can read/write/execute it. You can however change who owns the files or directories with the chown and chgrp commands.
 
 chmod means **ch**ange **mod**e...  
+
 | read    | write    | execute    |
 |---------------- | --------------- | --------------- |
 | 4    | 2    | 1    |

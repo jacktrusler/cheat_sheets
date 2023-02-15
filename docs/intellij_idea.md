@@ -29,9 +29,11 @@ gives a bottom bar with plugin info, spacing, branch name, line number and more.
 |`alt + enter` | shows errors under cursor. | 
 |`shift + shift` | search all classnames, methods, dirs, actions | 
 |`ctrl + shift + f` | search for any string match in whole repository | 
-|`alt + 9` | git menu | 
 |`alt + 1` | project window | 
+|`alt + 9` | git menu | 
+|`alt + 0` | commit menu |
 |`ctrl + ``| switch theme, check keymaps |
 |`ctrl + shift + -`| close all folds, + to open all folds |
+|`alt + insert`|New file|
 
 

@@ -3,7 +3,7 @@
 *Spring based applications that you can "just run"*
 
 ## Spring Boot
-[Watch this guys' playlist](https://www.youtube.com/playlist?list=PLqq-6Pq4lTTbx8p2oCgcAQGQyqN8XeA1x)  
+[Watch this guys' playlist (Springboot Javabrains)](https://www.youtube.com/playlist?list=PLqq-6Pq4lTTbx8p2oCgcAQGQyqN8XeA1x)  
 **Spring + Boot**
 Spring by itself is a framework that includes a lot of build tools, however you have to specify 
 what specific tools you want to use, this is both difficult and time consuming knowing what tools
@@ -69,7 +69,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 Spring annotations that tell springboot that the declared classes are a rest controller that 
 is mapped to an endpoint. This endpoint when hit will run the function that is annotated with
 @RequestMapping. The @Autowired method looks for a singleton @Service class that has been 
-initialized and allows you to access it. 
+initialized in spring memory and allows you to access it. 
 
 ```java
 //file TopicController.java
@@ -365,6 +365,11 @@ public class Main {
 In this example it is easy to extend SomeClass methods with **any** database object that's passed in,
 because you injected the database dependency, and the database dependency is abstract enough to use 
 any database you want, as long as it implements the Database interface.
+
+## Misc Info
+
+**Servlets**  
+Servlets are classes that handle requests, process them, and return a response.
 
 ## Autogenerate project
 [This link](http://start.spring.io)
