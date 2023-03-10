@@ -24,6 +24,9 @@ I guess it's because it's like **-- yum --** but fancier?
 
 ### Installing Stuff
 Official Red Hat package manager file **.rpm** is best usually, then **flatpak**, then **snap**. 
+**.rpm** files are usually formatted as following: 
+
+    <package_name>-<version-release>-<operating_system>-<CPU_architecture>.rpm
 
 In general flatpak is better than snap for desktop fedora, try to find flatpak packages if possible. 
 

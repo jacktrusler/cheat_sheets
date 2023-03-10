@@ -235,3 +235,26 @@ If you don't have nslookup install it with
 ## Miscellaneous
 Turn off water droplet sound in applications
 `dconf write /org/gnome/desktop/sound/event-sounds "false"`
+
+# RHEL 9.1 
+
+The system has to be registered with the entitlement server. Basically you have to tell Redhat
+that you have made an account to access the software. 
+
+    sudo subscription-manager register
+    sudo dnf update
+
+Check if you have repos.
+
+    sudo dnf repolist
+If not, change the subscription manager to allow repos. 
+
+    sudo vi /etc/yum/pluginconf.d/subscription-manager.conf
+Enable CodeReady Linux Builder repository (crb)
+
+    sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
+Install the Epel
+
+    sudo dnf install \
+    https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+
