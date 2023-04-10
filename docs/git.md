@@ -31,32 +31,30 @@ Files have 4 states:
 ![The staging process](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
 ## Configuration
-```
-git config
-git config --list --show-origin
-git config --global user.name "John Doe"
-git config --global user.email johndoe@example.com
-git config --global core.editor vim
-git config --global alias.co "checkout"
-```
+
+    git config
+    git config --list --show-origin
+    git config --global user.name "John Doe"
+    git config --global user.email johndoe@example.com
+    git config --global core.editor vim
+    git config --global alias.co "checkout"
 
 ## Basic Commands
 
 ### Logging
-```
-git log --pretty=oneline
-git log --stat
-git log --since=2.weeks
-```
 
+    git log --pretty=oneline
+    git log --stat
+    git log --since=2.weeks
+    
 ### Diffs and commits 
-```
-git diff <commit> (HEAD, HEAD^, HEAD~3)
-git diff <commit> --staged
-git commit --amend
-git reset --hard <commit>
-git reset --soft <commit>
-```
+
+    git diff <commit> (HEAD, HEAD^, HEAD~3)
+    git diff <commit> --staged
+    git commit --amend
+    git reset --hard <commit>
+    git reset --soft <commit>
+
 --amend flag adds changes to the same (previous) commit
 `git reset --hard` resets tree back to the commit and discards the subsequent changes out of local directory.
 `git reset --soft` resets the tree back to the commit but keeps changes in your stage.
@@ -65,30 +63,38 @@ git reset --soft <commit>
 ![git resetting](https://www.howtogeek.com/wp-content/uploads/csit/2021/07/f5026f58.png?trim=1,1&bg-color=000&pad=1,1)
 
 ## Branching
-```
-git branch somebranch (only makes a new branch)
-git checkout -b somebranch (makes a branch and switches to it)
-git switch -c somebranch (-c means create, updated from git checkout as of Git 2.23)
-git branch -vv (shows all branches and their latest commit message, extra v tracking info)
-git branch --merged (shows branches that are merged into current branch)
-```
+
+    git branch somebranch (only makes a new branch)
+    git checkout -b somebranch (makes a branch and switches to it)
+    git switch -c somebranch (-c means create, updated from git checkout as of Git 2.23)
+    git branch -vv (shows all branches and their latest commit message, extra v tracking info)
+    git branch --merged (shows branches that are merged into current branch)
+
 ### Remote
-```
-git remote -v
-git remote show <remote> (i.e origin)
-git ls-remote origin
-git push --set-upstream origin master (or feature branch)
-git checkout --track <remote>/<branch> (i.e origin/somebranch)
-```
+
+    git remote -v
+    git remote show <remote> (i.e origin)
+    git ls-remote origin
+    git push --set-upstream origin master (or feature branch)
+    git checkout --track <remote>/<branch> (i.e origin/somebranch)
 
 ### Rebasing
-```
-git checkout someBranch
-git rebase master
+
+    git checkout someBranch
+    git rebase master
+
 (then fast forward master)
-git checkout master
-git merge someBranch
-```
+
+    git checkout master
+    git merge someBranch
+
+### Deleting branches
+
+    git branch -d <local branch>
+    git push origin --delete <remote branch>
+    git fetch --prune
+
+`git fetch --prune` deletes local branches that are no longer in the upstream repo
 
 ## Misc
 
@@ -115,6 +121,32 @@ git push origin master
 This creates a remote called origin which is located at a certain github url.
 when you git push origin master now the master branch locally is pushed to the 
 origin branch which is located at the url you specified, aliased as origin.
+
+## Misc
+
+### Dealing with remote branches
+
+Display all origin branches. 
+
+    git branch -r | grep 'origin'
+
+Or a more verbose command
+
+    git remote show origin
+
+Preview local branches to delete, then delete by pattern.
+
+    git branch | grep "<pattern>" 
+    git branch | grep "<pattern>" | xargs git branch -D
+
+### Cleaning untracked Files
+check what will be deleted first (dry run)
+
+    git clean -n -fd
+
+actually delete files and directory from untracked
+
+    git clean -fd
 
 ### Removing files/editing entire history
 ```bash
