@@ -93,8 +93,13 @@ Files have 4 states:
     git branch -d <local branch>
     git push origin --delete <remote branch>
     git fetch --prune
+Pruning branches means deleting remote-tracking branches if they have been deleted upstream. The 
+technical meaning of pruning is cleaning up unreachable Git objects, meaning inaccessable by any
+references. To run this on every pull or fetch you can set config `git config remote.origin.prune true`
 
-`git fetch --prune` deletes local branches that are no longer in the upstream repo
+    git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+This command checks all local branches that are merged to master/main/dev and deletes them if 
+it is safe to do so.
 
 ## Misc
 
