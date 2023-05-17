@@ -97,7 +97,7 @@ Pruning branches means deleting remote-tracking branches if they have been delet
 technical meaning of pruning is cleaning up unreachable Git objects, meaning inaccessable by any
 references. To run this on every pull or fetch you can set config `git config remote.origin.prune true`
 
-    git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+    git branch --merged | egrep -v "(^\*|master|main|dev|develop|development)" | xargs git branch -d
 This command checks all local branches that are merged to master/main/dev and deletes them if 
 it is safe to do so.
 

@@ -171,6 +171,14 @@ For the number version it is perhaps easier to think of the permissions as bits:
 
     chgrp <group> <file1> <file2>...
     chgrp -R <group> <somedir>
+
+## Database on the Server
+
+-L flag binds the address of a local socket to a remote socket.
+This command exposes a ssh tunnel between selected ports in this fashion: 
+<local_socket>:<host>:<remote_socket> <server>
+`ssh -L 3306:127.0.0.1:3306 root@jacktrusler.com`
+
     
 ## How to get HTTPS certs
 
