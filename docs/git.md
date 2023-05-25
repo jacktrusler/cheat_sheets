@@ -133,11 +133,15 @@ origin branch which is located at the url you specified, aliased as origin.
 
 Display all origin branches. 
 
-    git branch -r | grep 'origin'
+    git branch -r 
 
 Or a more verbose command
 
     git remote show origin
+
+check all branches that have been merged into current HEAD
+
+    git branch -a --merged
 
 Preview local branches to delete, then delete by pattern.
 
@@ -149,7 +153,7 @@ check what will be deleted first (dry run)
 
     git clean -n -fd
 
-actually delete files and directory from untracked
+actually delete files and directories from untracked
 
     git clean -fd
 
