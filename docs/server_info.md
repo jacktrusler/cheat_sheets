@@ -11,7 +11,7 @@ Why centOS 9? Stable and reliable, doesn't need to be updated often. I like Redh
 ```bash 
 ssh-keygen -t ed25519
 ssh -i keyfile root@address
-ssh-copy-id -i ed_25519.pub <host>@<domain>  
+ssh-copy-id -i id_ed25519.pub <host>@<domain>  
 ```
 **Make sure to get the Extra Packages for Enterprise Linux on first use.**
 ```bash
