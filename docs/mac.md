@@ -21,6 +21,15 @@ hey, you get what you get.
 here's they're awesomely named website for more info. 
 [https://brew.sh/](https://brew.sh/)
 
+## Stupid .DS_Store file
+When you open a folder using finder, macOS automatically writes a `.DS_Store` file. This file stores 
+custom attributes like folder view options, icon positions, visual information, spotlight comments and
+more. The problem is that this file also contains metadata about that folder, which you don't want to expose. 
+When you're commiting to a repository it is also annoying to have a .DS_Store file in every folder,
+but .gitignore usually is ignoring the .DS_Store. If you want to get rid of the file use this command: 
+
+`defaults write com.apple.desktopservices DSDontWriteNetworkStores true`
+
 ## Ansible
 install python3 via homebrew: `brew install python3`  
 The install tells you where python3 was installed on your system, also gives you pip3 (python's package manager)
