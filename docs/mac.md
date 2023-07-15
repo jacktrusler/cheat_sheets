@@ -21,6 +21,15 @@ hey, you get what you get.
 here's they're awesomely named website for more info. 
 [https://brew.sh/](https://brew.sh/)
 
+## Disable Gatekeeper
+
+Sometimes when you download something from the internet MacOS won't let you open it because it 
+is from an unknown source and could be malware. If you're not afraid to live dangerously this is the 
+command to disable Gatekeeper:
+`sudo spctl --global-disable`
+and re-enabling it is: 
+`sudo spctl --global-enable`
+
 ## Stupid .DS_Store file
 When you open a folder using finder, macOS automatically writes a `.DS_Store` file. This file stores 
 custom attributes like folder view options, icon positions, visual information, spotlight comments and
