@@ -39,6 +39,10 @@ but .gitignore usually is ignoring the .DS_Store. If you want to get rid of the 
 
 `defaults write com.apple.desktopservices DSDontWriteNetworkStores true`
 
+## Mouse Acceleration
+Apparently can be turned off using this command in the terminal: 
+`defaults write .GlobalPreferences com.apple.mouse.scaling -1`
+
 ## Ansible
 install python3 via homebrew: `brew install python3`  
 The install tells you where python3 was installed on your system, also gives you pip3 (python's package manager)
