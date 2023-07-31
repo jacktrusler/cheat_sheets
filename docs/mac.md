@@ -10,7 +10,7 @@ Well yes but also no.
 
 > The Missing Package Manager for macOS (or Linux)
 
-that's the tagline, Linux isn't usually missing a package manager unless you're doing some crazy gamer stuff. 
+That's the tagline, Linux isn't usually missing a package manager unless you're doing some crazy gamer stuff. 
 However, MacOS is definitely missing a package manager, also brew is mostly worse than most Linux alternatives but 
 hey, you get what you get. 
 
@@ -39,10 +39,6 @@ but .gitignore usually is ignoring the .DS_Store. If you want to get rid of the 
 
 `defaults write com.apple.desktopservices DSDontWriteNetworkStores true`
 
-## Mouse Acceleration
-Apparently can be turned off using this command in the terminal: 
-`defaults write .GlobalPreferences com.apple.mouse.scaling -1`
-
 ## Ansible
 install python3 via homebrew: `brew install python3`  
 The install tells you where python3 was installed on your system, also gives you pip3 (python's package manager)
@@ -57,3 +53,23 @@ sudo pip3 install ansible --upgrade
 
 ansible looks for a hosts and ansible.cfg file in `etc/ansible`, however mac doesn't add this folder by default
 so add an `/etc/ansible` folder and add a `hosts` (no extension) and `ansible.cfg` file to it. 
+
+## Optional Apps I like
+
+### Raycast
+Really nice program that you can use instead of spotlight search. Need to change default bindings to 
+open raycast instead of spotlight. There's a pretty nice tutorial on the app to show you how to use it.   
+[raycast](https://raycast.com)
+
+### AltTab
+Nice window tabbing utility, I basically only use it to see full screen windows and tab through multiple 
+chrome instances.   
+[alt-tab](https://alt-tab-macos.netlify.app/)
+
+### Karabiner Elements
+Program that runs on startup that remaps keys, I like remapping capslock -> esc and visa versa.  
+[karabiner-elements](https://karabiner-elements.pqrs.org/)
+
+### Linear mouse
+To turn off mouse acceleration and turn up pointer speed past what mac allows.    
+[linear-mouse](https://linearmouse.org/)
