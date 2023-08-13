@@ -39,10 +39,16 @@ but .gitignore usually is ignoring the .DS_Store. If you want to get rid of the 
 
 `defaults write com.apple.desktopservices DSDontWriteNetworkStores true`
 
-## Ansible
-install python3 via homebrew: `brew install python3`  
-The install tells you where python3 was installed on your system, also gives you pip3 (python's package manager)
+## Install Python
 
+use pyenv, it allows you to change versions and pick what version you're using globally easily. 
+
+    brew install pyenv
+
+then there's install instructions to follow: 
+[pyenv on github](https://github.com/pyenv/pyenv#other-operations)
+
+## Ansible
 ```
 sudo pip3 install pyyaml
 sudo pip3 install ansible 
@@ -59,6 +65,7 @@ so add an `/etc/ansible` folder and add a `hosts` (no extension) and `ansible.cf
 ### Raycast
 Really nice program that you can use instead of spotlight search. Need to change default bindings to 
 open raycast instead of spotlight. There's a pretty nice tutorial on the app to show you how to use it.   
+Also use it to set commands for window management, don't need another app for that. 
 [raycast](https://raycast.com)
 
 ### AltTab

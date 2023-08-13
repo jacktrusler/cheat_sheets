@@ -182,6 +182,7 @@ This command exposes a ssh tunnel between selected ports in this fashion:
     
 ## How to get HTTPS certs
 
+### Acme.sh
 install acme.sh for certs.   
 [Install Guide](https://decovar.dev/blog/2021/04/05/acme-sh-instead-of-certbot/)
 
@@ -218,6 +219,12 @@ server {
 }
 ```
 Note: `/usr/local/www` is the preferred path for freeBSD to put www files. Linux uses `/var/www` by convention.
+
+### Certbot 
+Certbot is really easy to use, if your websites are already correctly configured in nginx then you 
+    
+    dnf install certbot
+    dnf install python3-certbot-nginx
 
 ## How to start an email server
 
