@@ -218,3 +218,11 @@ with the response.
 I found some preserved source code for a legacy version of vi:  
 
     https://github.com/n-t-roff/heirloom-ex-vi  
+### Vimdiff
+
+vimdiff <(git show origin:<file>)
+
+### Good help commands 
+
+:h pattern.txt  - to see regex patterns
+:h :help        - to see how help works.

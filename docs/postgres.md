@@ -7,11 +7,11 @@
 [Here's the installation URL](https://www.postgresql.org/download/linux/redhat/)  
 **Install the repository RPM:**
 
-    sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+    sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 
 **Install PostgreSQL:**
 
-    sudo yum install -y postgresql15-server
+    sudo dnf install -y postgresql15-server
 
 **Optionally initialize the database and enable automatic start:**
 

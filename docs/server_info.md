@@ -26,7 +26,7 @@ updatedb
 ```
 **Download a lot of soy**
 ```bash
-dnf update -y && dnf install -y gcc g++ curl git neovim vim zsh wget nodejs npm
+dnf update -y && dnf install -y gcc g++ curl git neovim vim zsh wget nodejs npm cmake
 chsh -s /usr/bin/zsh
 ```
 **Optionally install Development Tools and Oh-My-Zsh**
@@ -71,6 +71,32 @@ an important directory _smile_. In this case we're creating a swap file `mkswap`
 space, filled with 0s, then changing permissions and turning the `swapon`.
 
 [Here's a great article on dd](https://www.baeldung.com/linux/dd-command)
+
+## Check running processes
+
+```bash
+ps # running processes for current user
+ps aux # running processes for all users
+```
+
+## Making New Users and Groups
+
+```bash
+sudo adduser <username>
+sudo groupadd <groupname>
+sudo usermod -aG <groupname> <username> # -aG means append to group
+sudo usermod -aG sudo <username> # sudo permissions for user
+sudo passwd <username> # to change sudo password for user
+su - <username>
+su - # switches to root user
+sudo -u <username> -i # switches to user without knowing password
+```
+
+## Changing Shell
+```bash
+cat /etc/shells # To see available shells
+sudo chsh -s /bin/<shell> <user> # To change shell for user
+```
 
 ## Important directories
 
@@ -148,7 +174,7 @@ order is user/group/others so `chmod 754 [target]`
 **user**: 4 + 2 + 1 read + write + execute  
 **group**: 4 + 1 read + execute  
 **others**: 4 read  
-NOTE: `chmod 700 <target>` removes all permissions from group, others  
+NOTE: `chmod 700 <target>` removes all permissions from group, others but all permissions for owner  
   
 The semantic version is `chmod u=rwx,g=rx,o=r [target]`  
 **user**: u=rwx read + write + execute  
@@ -251,6 +277,9 @@ If you don't have nslookup install it with
 Turn off water droplet sound in applications
 `dconf write /org/gnome/desktop/sound/event-sounds "false"`
 
+Copy folder quickly from host to server
+`tar -c ./nvim-linux64 | ssh root@jsonbateman.com 'tar -xvf - -C /root'`
+
 # RHEL 9.1 
 
 The system has to be registered with the entitlement server. Basically you have to tell Redhat
@@ -272,4 +301,3 @@ Install the Epel
 
     sudo dnf install \
     https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-
