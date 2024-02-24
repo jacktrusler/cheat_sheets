@@ -80,3 +80,24 @@ Program that runs on startup that remaps keys, I like remapping capslock -> esc 
 ### Linear mouse
 To turn off mouse acceleration and turn up pointer speed past what mac allows.    
 [linear-mouse](https://linearmouse.org/)
+
+## Duplicate Disk (dd), install other operating systems
+
+`diskutils list` 
+
+Find the usb drive on it's mount point /dev/disk<n>
+
+Unmount the disk. Unmounting is to ensure the only operation that is happening 
+on the usb is the dd command. It prevents other operating system commands from interfering.
+
+`diskutil unmountDisk /dev/disk<n>`
+
+then run `dd if=/dev/zero of=/dev/disk<n> bs=1m`
+you can also run `dd if=/dev/zero of=/dev/rdisk<n> bs=1m`
+
+[here's why](https://superuser.com/questions/631592/why-is-dev-rdisk-about-20-times-faster-than-dev-disk-in-mac-os-x)
+you might use `rdisk`
+
+then copy the iso to the disk
+
+`sudo dd if=/Users/jack/Downloads/ubuntu-22.04.4-desktop-amd64.iso of=/dev/rdisk4 bs=1m`
