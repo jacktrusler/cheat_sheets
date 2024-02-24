@@ -101,3 +101,5 @@ you might use `rdisk`
 then copy the iso to the disk
 
 `sudo dd if=/Users/jack/Downloads/ubuntu-22.04.4-desktop-amd64.iso of=/dev/rdisk4 bs=1m`
+
+finally, eject it `diskutil eject /dev/disk<n>`
